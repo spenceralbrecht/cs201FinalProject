@@ -1,0 +1,10 @@
+/bin/
+.settings/
+.project
+*.json
+*.txt
+.classpath
+*.class
+MANIFEST.MF
+*.jar
+rebel.xml
