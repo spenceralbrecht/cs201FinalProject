@@ -40,10 +40,10 @@
 
 <!-- 	Page Content -->
 	<div class="container-fluid">
-		<div class="row h-100">
+		<div class="row">
 		
 <!-- 			Users -->
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div class="card-body">
 			    		<h3>User 1</h3>
@@ -69,7 +69,7 @@
 		 		</div>
 			</div>
 			
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div class="card-body">
 			    		<h3>User 2</h3>
@@ -94,7 +94,7 @@
 			    	</div>
 		 		</div>
 			</div>
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div class="card-body">
 			    		<h3>User 3</h3>
@@ -120,7 +120,7 @@
 			</div>
 			
 <!-- 			Group Task List -->
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div id="mainTasksCard" class="card-body">
 			    		<h3>All tasks</h3>
@@ -198,7 +198,7 @@
 
 		<footer class="footer">
 	      <div class="container-fluid fixed-bottom">
-	        <span class="text-muted">Place sticky footer content here.</span>
+	        <span id="projectCode">Place sticky footer content here.</span>
 	      </div>
 	    </footer>
 	
