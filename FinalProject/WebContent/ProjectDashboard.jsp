@@ -197,7 +197,7 @@
 <!-- 	</div> -->
 
 		<footer class="footer">
-	      <div class="container">
+	      <div class="container-fluid fixed-bottom">
 	        <span class="text-muted">Place sticky footer content here.</span>
 	      </div>
 	    </footer>

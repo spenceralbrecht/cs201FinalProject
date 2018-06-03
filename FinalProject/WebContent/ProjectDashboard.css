@@ -65,10 +65,18 @@ html, body {
 	overflow-y:  scroll;
 }
 
+.fixed-bottom {
+	background-color: white;
+	height: 50px;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
 .badge-primary {float: right;}
 
 .w3-container {height:  100%;}
 
 .sidebarLink {margin-left:  15px;}
 
-.container-fluid {height: 100%;/* padding-bottom: 80px; *//* overflow: hidden; */}
+.container-fluid {/* height: 434px; *//* padding-bottom: 80px; *//* overflow: hidden; */}
