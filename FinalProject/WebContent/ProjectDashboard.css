@@ -30,3 +30,21 @@ hr {
 body {
   padding:0;
 }
+
+.w3-blue {
+	padding:  10px;
+}
+
+#profilePicture {width: 150px;height:  150px;object-fit:  cover;}
+
+#username {
+	text-align:  center;
+	font-weight: bold;
+	font-size: 26px;
+}
+
+.w3-bar-item {
+	/* margin-left: 20px; */
+}
+
+.sidebarLink {margin-left:  15px;}

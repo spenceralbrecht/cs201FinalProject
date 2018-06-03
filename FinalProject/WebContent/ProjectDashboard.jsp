@@ -27,9 +27,15 @@
 		style="display: none" id="mySidebar">
 		<button onclick="w3_close()" class="w3-bar-item w3-large">Close
 			&times;</button>
-		<a href="#" class="w3-bar-item w3-button">Link 1</a> <a href="#"
-			class="w3-bar-item w3-button">Link 2</a> <a href="#"
-			class="w3-bar-item w3-button">Link 3</a>
+		<a id="username" href="#" class="w3-bar-item w3-button">Peter Pug</a>
+		<a href="#" class="w3-bar-item w3-button">
+			<img id="profilePicture" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsOrFQqmb0ugvL-8vTwyqawh_H3Lar8JsJMHMBmXBLChT_7dId" 
+			class="w3-circle">
+		</a>
+		<a href="#" class="w3-bar-item w3-button sidebarLink">Other Project</a> 
+		<a href="#" class="w3-bar-item w3-button sidebarLink">Other Project</a> 
+		<a href="#" class="w3-bar-item w3-button sidebarLink">Other Project</a>
+		<a href="#" class="w3-bar-item w3-button sidebarLink">Logout</a>
 	</div>
 
 	<!-- Page Content -->
@@ -38,7 +44,7 @@
 			<button class="w3-button w3-blue w3-xlarge" onclick="w3_open()">☰</button>
 		</div>
 		<div class="w3-container w3-cell">
-			<h1>My Page</h1>
+			<h1>CS 201 Project</h1>
 		</div>
 	</div>
 
