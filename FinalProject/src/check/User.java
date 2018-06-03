@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class User {
 	private String username;
 	private String password;
-	private UserProjects userprojectslist;
+	//private UserProjects userprojectslist;
+	private ArrayList<UserProject> userprojects;
 	
 	
 	public User(String username, String password) {
@@ -20,12 +21,17 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
-	public ArrayList<UserProject> getuserProjects() {
-		return userprojectslist.getUserProjects();
-	}
-	public void addProject(int code) {
-		userprojectslist.addUserProject(code);
-	}
 	
+	public int getNumProjects() {
+		return userprojects.size();
+	}
+	public void addUserProject(int code) {
+		UserProject a = new UserProject(code);
+		userprojects.add(a);
+	}
+	public ArrayList<UserProject> getUserProjects() {
+		
+		return userprojects;
+	}
 
 }

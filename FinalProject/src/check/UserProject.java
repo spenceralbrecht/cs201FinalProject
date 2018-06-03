@@ -1,8 +1,10 @@
 package check;
+import java.util.ArrayList;
 
 public class UserProject {
 	private int code;
-	private UserTasks usertasks;
+	private ArrayList<UserTask> usertasks;
+	
 	public UserProject(int code) {
 		this.code = code;
 		this.usertasks = null;
@@ -13,10 +15,13 @@ public class UserProject {
 	public void setCode(int k) {
 		this.code = k;
 	}
-	public UserTasks getUserTasks() {
+	public ArrayList<UserTask> getUserTasks() {
 		return usertasks;
 	}
 	public void addTask(UserTask a) {
-		usertasks.addTask(a);
+		usertasks.add(a);
+	}
+	public int getNumTasks() {
+		return usertasks.size();
 	}
 }

@@ -18,5 +18,15 @@ public class Projects {
 		}
 		return false;
 	}
-	
+	public Project getProject(int code) {
+		for(int i = 0; i < projects.size();i++) {
+			if(projects.get(i).getCode()==code) {
+				return projects.get(i);
+			}
+		}
+		return null;
+	}
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
 }
