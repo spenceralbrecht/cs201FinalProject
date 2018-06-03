@@ -1,5 +1,6 @@
 package check;
 import java.util.ArrayList;
+import java.lang.Math.*;
 
 public class Project {
 	private String title;
@@ -9,6 +10,21 @@ public class Project {
 	
 	public Project(String title) {
 		this.title = title;
-		//this.id = createId(); NEED TO DO THIS
+		this.users = null;
+	}
+	public String addUser(User a) {
+		if(users.size()==0) {
+			users.add(a);
+		}
+		for(int i = 0; i < Math.min(users.size(),8); i++) {
+			if(users.get(i).getUsername() == a.getUsername()) {
+				return "Already added";
+			}
+		}
+		if (users.size()> 8) {
+			users.add(a);
+			return "Success";
+		}
+		return "Full";
 	}
 }
