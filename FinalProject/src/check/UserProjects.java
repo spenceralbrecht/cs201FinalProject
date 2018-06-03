@@ -7,7 +7,8 @@ public class UserProjects {
 	public int getNumUsers() {
 		return userprojects.size();
 	}
-	public void addUser(UserProject a) {
+	public void addUserProject(int code) {
+		UserProject a = new UserProject(code);
 		userprojects.add(a);
 	}
 	public ArrayList<UserProject> getUserProjects() {

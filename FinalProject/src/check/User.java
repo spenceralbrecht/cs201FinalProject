@@ -23,7 +23,9 @@ public class User {
 	public ArrayList<UserProject> getuserProjects() {
 		return userprojectslist.getUserProjects();
 	}
-	
+	public void addProject(int code) {
+		userprojectslist.addUserProject(code);
+	}
 	
 
 }

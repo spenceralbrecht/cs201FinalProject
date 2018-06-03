@@ -3,9 +3,9 @@ package check;
 public class UserProject {
 	private int code;
 	private UserTasks usertasks;
-	public UserProject(int code, UserTasks usertasks) {
+	public UserProject(int code) {
 		this.code = code;
-		this.usertasks = usertasks;
+		this.usertasks = null;
 	}
 	public int getCode() {
 		return code;
