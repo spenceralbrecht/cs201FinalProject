@@ -27,4 +27,8 @@ public class Project {
 		}
 		return "Full";
 	}
+	public void addTask(String t) {
+		Task a = new Task(t);
+		tasks.add(a);
+	}
 }
