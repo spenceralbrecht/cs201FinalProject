@@ -66,12 +66,24 @@ html, body {
 }
 
 .fixed-bottom {
-	background-color: white;
-	height: 50px;
+	background-color: #2296f3;
+	height: 75px;
 	width: 100%;
 	padding: 0;
 	margin: 0;
+	text-align:  right;
 }
+
+#projectCode {
+	color: white;
+	font-size: 45px;
+}
+
+.col-md-2 {padding: 0;}
+
+#projectCodeDiv {padding-top: 4px;text-align: left;}
+
+.progress {s;margin-top: 15px;}
 
 .badge-primary {float: right;}
 

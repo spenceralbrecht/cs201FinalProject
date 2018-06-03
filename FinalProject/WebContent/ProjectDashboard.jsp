@@ -39,8 +39,8 @@
 	</div>
 
 <!-- 	Page Content -->
-	<div class="container-fluid">
-		<div class="row">
+	<div class="container-fluid h-100">
+		<div class="row h-100">
 		
 <!-- 			Users -->
 			<div class="col-md-3 ">
@@ -65,6 +65,11 @@
 						  	
 						  </li>
 						</ul>
+						<div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+						      <span class="sr-only">70% Complete</span>
+						    </div>
+						</div>
 			    	</div>
 		 		</div>
 			</div>
@@ -91,6 +96,11 @@
 						  	
 						  </li>
 						</ul>
+						<div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						      <span class="sr-only">50% Complete</span>
+						    </div>
+						</div>
 			    	</div>
 		 		</div>
 			</div>
@@ -115,6 +125,11 @@
 						  	
 						  </li>
 						</ul>
+						<div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+						      <span class="sr-only">20% Complete</span>
+						    </div>
+						</div>
 			    	</div>
 		 		</div>
 			</div>
@@ -198,7 +213,20 @@
 
 		<footer class="footer">
 	      <div class="container-fluid fixed-bottom">
-	        <span id="projectCode">Place sticky footer content here.</span>
+	      	<div class="row">
+	      		<div class="col-md-10">
+			      	<div class="progress">
+					    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+					      <span class="sr-only">70% Complete</span>
+					    </div>
+					</div>
+	      		</div>
+	      		<div class="col-md-2">
+					<div id="projectCodeDiv">
+				        <span id="projectCode">#QF734G9</span>			
+					</div>	      			
+	      		</div>
+	      	</div>
 	      </div>
 	    </footer>
 	
