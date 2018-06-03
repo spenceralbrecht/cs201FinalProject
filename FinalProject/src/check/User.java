@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class User {
 	private String username;
 	private String password;
-	//private UserProjects userprojectslist;
 	private ArrayList<UserProject> userprojects;
 	
 	
