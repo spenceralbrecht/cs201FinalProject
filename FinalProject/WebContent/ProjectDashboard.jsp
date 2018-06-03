@@ -12,6 +12,11 @@
 <script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
 </head>
 <body>
+
+	<% 
+		// Read in the project data from the database
+	%>
+
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-bar-block w3-border-right"
 		style="display: none" id="mySidebar">
