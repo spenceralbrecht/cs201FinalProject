@@ -3,12 +3,21 @@ package check;
 import java.util.ArrayList;
 
 public class Users {
-protected ArrayList<User> users;
+	protected ArrayList<User> users;
+	
+	public Users() {
+		this.users = new ArrayList<User>();
+	}
 	
 	public int getNumUsers() {
 		return users.size();
 	}
-	public void addUser(User a) {
+	public void addUser(String username, String password) {
+		User a = new User(username, password);
+		if(users.isEmpty()) {
+			users = new ArrayList<User>();
+			
+		}
 		users.add(a);
 	}
 	public boolean userExists(String username) {

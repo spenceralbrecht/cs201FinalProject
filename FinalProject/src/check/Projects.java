@@ -7,8 +7,10 @@ public class Projects {
 	public int getNumProjects() {
 		return projects.size();
 	}
-	public void addProject(Project a) {
-		projects.add(a);
+	public void addProject(String t) {
+		int code = projects.size()+1;
+		Project p = new Project(t, code);
+		projects.add(p);
 	}
 	public boolean ProjectExists(int code) {
 		for(int i = 0; i < projects.size();i++) {

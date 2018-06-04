@@ -1,6 +1,5 @@
 package check;
 import java.util.ArrayList;
-import java.lang.Math.*;
 
 public class Project {
 	private String title;
@@ -8,13 +7,19 @@ public class Project {
 	private ArrayList<User> users;
 	private ArrayList<Task> tasks;
 	
-	public Project(String title) {
+	public Project(String title, int code) {
 		this.title = title;
 		this.users = null;
-		this.code = 0; //need to do FIX
+		this.code = code; 
 	}
 	public int getCode() {
 		return code;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String s) {
+		this.title = s;
 	}
 	public String addUser(User a) {
 		if(users.size()==0) {

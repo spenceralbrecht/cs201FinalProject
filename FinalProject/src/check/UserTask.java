@@ -2,21 +2,24 @@ package check;
 
 public class UserTask {
 	private boolean completed;
-	private String task;
-	public UserTask(String task) {
+	private String taskname;
+	public UserTask() {
+		this.taskname = null;
+	}
+	public UserTask(String taskname) {
 		this.completed = false;
-		this.task = task;
+		this.taskname = taskname;
 	}
 	public void setComplete() {
 		completed = true;
 	}
-	public boolean getComplete() {
+	public boolean getCompleteStatus() {
 		return completed;
 	}
-	public void setTask(String task) {
-		this.task = task;
+	public void setTaskName(String taskname) {
+		this.taskname = taskname;
 	}
-	public String getTask() {
-		return task;
+	public String getTaskName() {
+		return taskname;
 	}
 }
