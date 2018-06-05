@@ -6,3 +6,4 @@
 MANIFEST.MF
 *.jar
 rebel.xml
+.classpath
