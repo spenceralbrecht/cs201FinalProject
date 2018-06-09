@@ -1,0 +1,174 @@
+@use postcss-cssnext;
+
+/* body */
+:root {
+    --htmlFontSize: 100%;
+
+    --bodyBackgroundColor: #2c3338;
+    --bodyColor: var(--baseColor);
+    --bodyFontFamily: 'Open Sans';
+    --bodyFontFamilyFallback: sans-serif;
+    --bodyFontSize: 0.875rem;
+    --bodyFontWeight: 400;
+    --bodyLineHeight: 1.5;
+    --containerFontColor: #D1D1D1;
+    --containerFontClickColor: #eee;
+    --containerFontHoverBackgroundColor: #D1D1D1;
+}
+body {
+    background-color: var(--bodyBackgroundColor);
+    color: var(--bodyColor);
+    font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+    font-size: var(--bodyFontSize);
+    font-weight: var(--bodyFontWeight);
+    height: 100%;
+    line-height: var(--bodyLineHeight);
+    margin: 0;
+    min-height: 100vh;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+
+}
+#container{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+#container h1{
+    color: var(--containerFontHoverBackgroundColor);
+    font-size: 150px;
+    font-family: building;
+}
+#container h2{
+    color: var(--containerFontHoverBackgroundColor);
+    font-size: 100px;
+    font-family: building;
+}
+/* The side navigation menu */
+:root {
+    --sideClickBackgroundColor: #ea4c88;
+    --sideClickColor: #eee;
+    --sideClickHoverBackgroundColor: #d44179;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #33363a; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fbfbfb;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    background-color: var(--sideClickHoverBackgroundColor);
+}
+
+.sidenav a:active {
+    background-color: var(--sideClickBackgroundColor);
+}
+
+#avatar {
+    border-radius: 50%;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+#navButton{
+    position:absolute;
+    transition: 0.5s;
+    border-radius: 50%;
+    top:50%;
+
+}
+
+#navButton:hover{
+    background-color: var(--sideClickHoverBackgroundColor);
+}
+#navButton:active{
+    background-color: var(--sideClickBackgroundColor);
+}
+#logoutButton{
+    color: #ea4c88;
+    font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
+}
+#logoutButton:hover{
+    background-color:var(--sideClickHoverBackgroundColor);
+    color: white;
+}
+#logoutButton:active{
+    background-color:var(--sideClickBackgroundColor);
+    color: white;
+}
+#navButton:hover{
+    background-color: var(--sideClickHoverBackgroundColor);
+}
+#navButton:active{
+    background-color: var(--sideClickBackgroundColor);
+}
+
+:root {
+    --headerBackgroundColor: #3475A7;
+}
+.header{
+    font-family: Helvetica;
+    padding-top:50px;
+    padding-bottom:50px;
+    background-color: var(--headerBackgroundColor);
+}
+
+
+
+.header a{
+    font-family: Helvetica;
+    padding-left:50px;
+    color: #eee;
+    float: left;
+}
+
+#container{
+    text-size:200px;
+}
+
+#searchProjectButton{
+    position:relative;
+    margin-left:1000px;
+}
+
+.searchProjectCode{
+    border-color: #000000;
+    border-style: solid;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 2px;
+    border-left-width: 0px;
+    background-color:var(--headerBackgroundColor);
+}
+
