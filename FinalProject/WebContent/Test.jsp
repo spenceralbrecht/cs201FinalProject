@@ -12,13 +12,13 @@
     <meta charset="utf-8">
     <title>test</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="jquery-1.12.4.min.js"></script>
+    <script src="javascript/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="css/test.css">
     <link rel="stylesheet" href="odometer-theme-default.css"/>
-    <script src="odometer.min.js"></script>
+    <script src="javascript/odometer.min.js"></script>
     <script>
         /* Set the width of the side navigation to 250px */
         function openNav() {
