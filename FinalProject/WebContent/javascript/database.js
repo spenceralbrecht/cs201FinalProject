@@ -1,4 +1,4 @@
-function updateTaskInDatabase(title, projectID) {
+function addTaskInDatabase(title, projectID) {
 
 	var url = "updateDatabase.java";
 	var type = "addTask";
@@ -35,7 +35,7 @@ function markCompletedInDatabase(userID, taskID) {
 	});
 }
 
-function addTaskInDatabase(userID, taskID) {
+function assignTaskInDatabase(userID, taskID) {
 	var url = "updateDatabase.java";
 	var type = "assignTask";
 
