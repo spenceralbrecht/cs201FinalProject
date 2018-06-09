@@ -56,7 +56,40 @@
                 <ul>
                 </ul>
             </div>
+            <div class="progress">
+                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
         </div>
+            <div class="tdl-holder">
+                <h2>User 2</h2>
+                <div class="tdl-content2">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="tdl-holder">
+                <h2>User 3</h2>
+                <div class="tdl-content3">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="tdl-holder">
+                <h2>User 3</h2>
+                <div class="tdl-content4">
+                    <ul>
+                    </ul>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
         </div>
         <div class="ProjectTasks">
             <div class="tdl-holder">
@@ -68,6 +101,9 @@
                 <input type="text" class="tdl-new" placeholder="Write new item and hit 'Enter'...">
             </div>
         </div>
+    </div>
+    <div class="bottom">
+        <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
 </div>
 <script>
