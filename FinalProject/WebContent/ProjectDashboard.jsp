@@ -12,6 +12,11 @@
 <script type=”text/javascript” src=”bootstrap/js/bootstrap.min.js”></script>
 </head>
 <body>
+
+	<% 
+		// Read in the project data from the database
+	%>
+
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-bar-block w3-border-right"
 		style="display: none" id="mySidebar">
@@ -39,11 +44,11 @@
 	</div>
 
 <!-- 	Page Content -->
-	<div class="container-fluid">
+	<div class="container-fluid h-100">
 		<div class="row h-100">
 		
 <!-- 			Users -->
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div class="card-body">
 			    		<h3>User 1</h3>
@@ -65,11 +70,16 @@
 						  	
 						  </li>
 						</ul>
+						<div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+						      <span class="sr-only">70% Complete</span>
+						    </div>
+						</div>
 			    	</div>
 		 		</div>
 			</div>
 			
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div class="card-body">
 			    		<h3>User 2</h3>
@@ -91,10 +101,15 @@
 						  	
 						  </li>
 						</ul>
+						<div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						      <span class="sr-only">50% Complete</span>
+						    </div>
+						</div>
 			    	</div>
 		 		</div>
 			</div>
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div class="card-body">
 			    		<h3>User 3</h3>
@@ -115,12 +130,17 @@
 						  	
 						  </li>
 						</ul>
+						<div class="progress">
+						    <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width:20%">
+						      <span class="sr-only">20% Complete</span>
+						    </div>
+						</div>
 			    	</div>
 		 		</div>
 			</div>
 			
 <!-- 			Group Task List -->
-			<div class="h-100 col-md-3 ">
+			<div class="col-md-3 ">
 				<div class="card">
 			    	<div id="mainTasksCard" class="card-body">
 			    		<h3>All tasks</h3>
@@ -198,7 +218,20 @@
 
 		<footer class="footer">
 	      <div class="container-fluid fixed-bottom">
-	        <span class="text-muted">Place sticky footer content here.</span>
+	      	<div class="row">
+	      		<div class="col-md-10">
+			      	<div class="progress">
+					    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+					      <span class="sr-only">70% Complete</span>
+					    </div>
+					</div>
+	      		</div>
+	      		<div class="col-md-2">
+					<div id="projectCodeDiv">
+				        <span id="projectCode">#QF734G9</span>			
+					</div>	      			
+	      		</div>
+	      	</div>
 	      </div>
 	    </footer>
 	
