@@ -14,7 +14,11 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.title{
+    font-family: Calendas;
+    font-size: 100px;
+    color: rgb(239, 238, 255);
+}
 /* helpers/grid.css */
 
 :root {

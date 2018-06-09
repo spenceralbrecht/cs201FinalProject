@@ -16,15 +16,10 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="guestLogin.css">
-    <script>
-        function backToLogin(){
-            window.location.replace("login.jsp");
-        }
-    </script>
 
 </head>
 <body class="align">
-<button onclick="backToLogin()"><span style="text-decoration: underline;">Back to Login</span></button>
+<a href="login.jsp">back to login</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg>
 <div class="grid">
 
     <form action="signUpValidation" method="POST" class="form login">
