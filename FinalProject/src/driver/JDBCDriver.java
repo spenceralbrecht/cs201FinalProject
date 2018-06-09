@@ -1,4 +1,4 @@
-package check;
+package driver;
 
 import java.sql.*;
 
@@ -62,6 +62,28 @@ public class JDBCDriver {
 		}
 		return false;		
 	}
+	public static boolean validateSignup(String usr, String password){
+		connect();
+		try {
+			ps = conn.prepareStatement("SELECT username FROM User WHERE username=?");
+			ps.setString(1, usr);
+			rs = ps.executeQuery();
+			System.out.println(rs);
+			if(rs.next()){
+				return true;
+			}
+			else {
+				ps = conn.prepareStatement("INSERT username FROM User WHERE username=?");
+				ps.setString(1, usr);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQLException in function \"validate\"");
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return false;		
+	} 
 	
 	
 
