@@ -9,7 +9,7 @@ CREATE TABLE User (
 );
 
 INSERT INTO User (username, pw)
-	VALUES	('JeffMiller', 'PHD'),
+	VALUES	('hi', 'hi'),
 			('201Stud', 'sleep');
             
 CREATE TABLE Project (
