@@ -65,10 +65,13 @@
 </div>
 <script>
     var isOpen = false;
-    var tasks = 100;//how many tasks total user needs to do;
-    var username = "James"; //first name
-    var Projects = null;//should be a project array.
-    var user;
+    <%int numTasks  =(int) request.getSession().getAttribute("numTasks");%>
+	console.log("<%=numTasks%>");
+    var tasks = "<%=numTasks%>";
+    //how many tasks total user needs to do;
+	<%String usr  =(String) request.getSession().getAttribute("username");%>
+	console.log("<%=usr%>");
+	var username = "<%=usr%>";
 
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
