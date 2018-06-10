@@ -144,7 +144,7 @@ public class JDBCDriver {
 		connect();
 		ArrayList<Project> userprojects = new ArrayList<Project>();
 		try {
-			ps = conn.prepareStatement("SSELECT DISTINCT p.projectID,p.ptitle,p.userID, up.projectID AS 'upppid',up.upID FROM UserProject up JOIN Project p WHERE up.userID=? AND up.projectID= p.projectID");
+			ps = conn.prepareStatement("SELECT DISTINCT p.projectID,p.ptitle,p.userID, up.projectID AS 'upppid',up.upID FROM UserProject up JOIN Project p WHERE up.userID=? AND up.projectID= p.projectID");
 			ps.setInt(1, userID);
 			rs = ps.executeQuery();
 			System.out.println(rs);
