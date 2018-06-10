@@ -1,6 +1,5 @@
 package driver;
 
-import java.io.PrintWriter;
 import java.sql.*;
 import check.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class JDBCDriver {
 		try {
 	
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=root&useSSL=false");
+			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=password!&useSSL=false");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
