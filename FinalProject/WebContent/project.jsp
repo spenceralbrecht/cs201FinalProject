@@ -73,8 +73,24 @@ import =  "java.util.Map"%>
 			
 					for (int j=0; j<tasksForUser.size(); j++){
 			%>
-						var listItem = document.createElement('ul');
-						listItem.innerHTML = "<%= tasksForUser.get(j) %>";
+						var listItem = document.createElement('li');
+						var label = document.createElement('label');
+						var checkbox = document.createElement('input');
+						checkbox.type = "checkbox";
+						var circle = document.createElement('i');
+						var span = document.createElement('span');
+			<%			
+						if(userTasks.get(tasksForUser.get(j))){ 
+			%>
+							checkbox.checked;
+			<%			
+						}
+			%>
+						span.innerHTML = "<%= tasksForUser.get(j) %>";
+						label.appendChild(checkbox);
+						label.appendChild(circle);
+						label.appendChild(span);
+						listItem.appendChild(label);
 						content.appendChild(listItem);
 			<%			
 					}
@@ -131,8 +147,8 @@ import =  "java.util.Map"%>
 		</div>
 		<!-- content -->
 		<div id="container">
-			<div class="UsersTask">
-				<div id="userCard1" class="tdl-holder">
+ 			<div class="UsersTask">
+ 				<div id="userCard1" class="tdl-holder">
 <!-- 					<h2>User 1</h2> -->
 <!-- 					<div class="tdl-content1"> -->
 <!-- 						<ul> -->
