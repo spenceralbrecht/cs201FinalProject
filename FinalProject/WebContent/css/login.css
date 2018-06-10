@@ -14,7 +14,11 @@
     flex-direction: column;
     justify-content: center;
 }
-
+.title{
+    font-family: Calendas;
+    font-size: 100px;
+    color: rgb(239, 238, 255);
+}
 /* helpers/grid.css */
 
 :root {
@@ -230,14 +234,4 @@ p {
 
 .text--center {
     text-align: center;
-}
-
-button{
-    font-size:20px;
-    background:#2c3338;
-    border: none;
-}
-
-h3{
-    font-size:20px;
 }

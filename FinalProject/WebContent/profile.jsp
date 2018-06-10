@@ -16,13 +16,12 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/test.css">
-    <link rel="stylesheet" href="odometer-theme-default.css"/>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/odometer-theme-default.css"/>
     <script src="javascript/odometer.min.js"></script>
     <script>
         /* Set the width of the side navigation to 250px */
         function openNav() {
-            //go over the user list, add them up;
             document.getElementById("mySidenav").style.width = "250px";
         }
 
@@ -39,7 +38,7 @@
     <a id="name">Jinpeng He</a>
     <span id="projectDirection"></span>
     <a >
-        <a id="logoutButton" href="login.jsp">Log out</a>
+    <a id="logoutButton" href="login.jsp">Log out</a>
 </div>
 
 <div id="main">

@@ -12,11 +12,11 @@
     <meta charset="utf-8">
     <title>test</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="jquery-1.12.4.min.js"></script>
+    <script src="javascript/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="css/project.css">
     <script>
         /* Set the width of the side navigation to 250px */
         function openNav() {
@@ -33,7 +33,7 @@
 <!-- side bar -->
 <div id="mySidenav" class="sidenav">
     <img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100"/>
-    <a id="name">Jinpeng He</a>
+    <a id="name" href="profile.jsp">Jinpeng He</a>
     <span id="projectDirection"></span>
     <a id="logoutButton" href="login.jsp">Log out</a>
 </div>
@@ -133,7 +133,7 @@
 
     /* TO DO LIST */
 
-
+    //when hitting the button to create a task;
     $(".tdl-new").bind('keypress', function(e){
         var code = (e.keyCode ? e.keyCode : e.which);
         if(code == 13) {
@@ -149,7 +149,7 @@
     });
 
 
-    // for dynamically created a tags
+    // when you add a task into your task list;
     $(".tdl-content").on('click', "a", function(){
         var _li = $(this).parent().parent("li");
         $(".tdl-content1 ul").append("<li><label><input type=\"checkbox\" checked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");

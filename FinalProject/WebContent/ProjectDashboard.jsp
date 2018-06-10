@@ -13,9 +13,7 @@
 </head>
 <body>
 
-	<% 
-		// Read in the project data from the database
-	%>
+	<script type="text/javascript" src="javascript/database.js"></script>
 
 	<!-- Sidebar -->
 	<div class="w3-sidebar w3-bar-block w3-border-right"

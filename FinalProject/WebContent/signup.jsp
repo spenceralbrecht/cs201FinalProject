@@ -9,22 +9,17 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Signup</title>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="signup.css">
-    <script>
-        function backToLogin(){
-            window.location.replace("login.jsp");
-        }
-    </script>
+    <link rel="stylesheet" href="css/signup.css">
 
 </head>
 <body class="align">
-<button id="back-font" onclick="backToLogin()"><h3>Back to Login</h3></button>
+<a href="login.jsp">back to login</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg>
 <div class="grid">
 
     <form action="signUpValidation" method="POST" class="form login">
