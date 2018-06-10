@@ -1,24 +1,27 @@
 function addTaskInDatabase(title, projectID) {
 
-	var url = "updateDatabase.java";
+	var url = "UpdateDatabase";
 	var type = "addTask";
 
 	$.ajax({
-		type : "POST",
-		data : 'queryType=' + type + '&title=' + title + '&projectID='
-				+ projectID,
+		type : "GET",
 		url : url,
+		data : {
+			queryType: type,
+			title: title,
+			projectID: projectID,
+		},
+//		data : 'queryType=' + type + '&title=' + title + '&projectID='+ projectID,
 		// Runs once the request returns
 		success : function(content) {
 			console.log("updated task in database");
 			// 	                  sendUpdateToAllOtherUsers();
 		}
 	});
-	console.log("Line 17");
 }
 
 function markCompletedInDatabase(userID, taskID) {
-	var url = "updateDatabase.java";
+	var url = "UpdateDatabase.java";
 	var type = "markCompleted";
 
 	$.ajax({
@@ -35,7 +38,7 @@ function markCompletedInDatabase(userID, taskID) {
 }
 
 function assignTaskInDatabase(userID, taskID) {
-	var url = "updateDatabase.java";
+	var url = "UpdateDatabase.java";
 	var type = "assignTask";
 
 	$.ajax({

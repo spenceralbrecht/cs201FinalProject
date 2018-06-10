@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="javascript/jquery-1.12.4.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="javascript/database.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/project.css">
@@ -107,6 +108,7 @@
     </div>
 </div>
 <script>
+
     var isOpen = false;
     var tasks = 100;//how many tasks total user needs to do;
     var username = "James"; //first name
@@ -142,6 +144,11 @@
             if (s == ""){
                 return false;
             }else{
+            	// Send the update to the database
+            	var taskTitle = $(this).val();
+            	console.log(taskTitle);
+            	addTaskInDatabase(taskTitle, 1)
+            	
                 $(".tdl-content ul").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a href='#'>+</a></label></li>");
                 $(this).val("");
             }
@@ -151,6 +158,7 @@
 
     // when you add a task into your task list;
     $(".tdl-content").on('click', "a", function(){
+    	console.log("hello");
         var _li = $(this).parent().parent("li");
         $(".tdl-content1 ul").append("<li><label><input type=\"checkbox\" checked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
         $(this).val("");

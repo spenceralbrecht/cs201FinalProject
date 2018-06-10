@@ -23,15 +23,10 @@
 <div class="header">
 <span class="title">CheckMate</span>
 
-
-<<<<<<< HEAD
 <div class="grid">
 	<span style="color: red;font-weight:bold">${errmsg!=null? errmsg : ''}</span><br>
     <form action="authenticate.jsp" method="POST" class="form login" >
-=======
 
-    <form action="authenticate.jsp" method="POST" class="form login">
->>>>>>> 3089b955fc7b5e161876ce84c22df6dccd2d25a9
 
 </div>
 <div class="grid">
