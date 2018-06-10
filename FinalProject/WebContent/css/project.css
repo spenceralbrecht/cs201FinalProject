@@ -39,6 +39,9 @@ body {
 #container{
     margin-left: 50px;
     margin-top: 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
 }
 #container h1{
     color: var(--containerFontHoverBackgroundColor);
@@ -52,7 +55,14 @@ body {
     --sideClickColor: #eee;
     --sideClickHoverBackgroundColor: #d44179;
 }
-
+#createProjectBar{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+}
 .sidenav {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
@@ -155,8 +165,8 @@ body {
 }
 
 #searchProjectButton{
-    position:relative;
-    margin-left:1000px;
+    position: fixed;
+    margin-left: 900px;
 }
 
 .searchProjectCode{
@@ -167,6 +177,10 @@ body {
     border-bottom-width: 2px;
     border-left-width: 0px;
     background-color:var(--headerBackgroundColor);
+    height: 30px;
+    float: right;
+    margin-right:  50px;
+    margin-top: -30px;
 }
 
 
@@ -210,14 +224,13 @@ body {
     float:left;
     display: grid;
     grid-template-columns:auto auto auto;
+    grid-column-gap:10px;
 }
 
-.progress{
-    position: sticky;}
 
 .ProjectTasks{
     float:left;
-    width: 30%;
+    width: 100%;
     overflow: auto;
 }
 .tdl-holder ul, .tdl-holder li {
@@ -375,4 +388,15 @@ body {
 @-webkit-keyframes collapseItem {
     0% 		{ -webkit-transform: perspective(500px) rotateX(0deg); 	}
     100% 	{ -webkit-transform: perspective(500px) rotateX(-90deg);}
+}
+
+
+input[type="text"]{
+    font-size: 16px; !important;
+}
+
+
+#searchProjectButton{
+    position: fixed;
+    margin-left: 900px;
 }
