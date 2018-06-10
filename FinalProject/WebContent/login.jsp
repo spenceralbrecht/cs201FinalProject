@@ -5,7 +5,7 @@
   Time: 1:35 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="driver.*"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
 <head>
@@ -24,12 +24,10 @@
 <span class="title">CheckMate</span>
 
 
-
+</div>
 <div class="grid">
-	<span style="color: red;font-weight:bold">${errmsg!=null? errmsg : ''}</span><br>
-    <form action="authenticate.jsp" method="POST" class="form login" >
 
-
+    <form action="authenticate.jsp" method="POST" class="form login">
 
         <div class="form__field">
             <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
