@@ -5,7 +5,7 @@
   Time: 1:35 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import="driver.*"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
 <head>
@@ -22,8 +22,8 @@
 <a href="login.jsp">back to login</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg>
 <div class="grid">
 
-    <form action="AuthenticateSignUp.jsp"  method="POST" class="form login">
-	
+    <form action="signUpValidation" method="POST" class="form login">
+
         <div class="form__field">
             <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
             <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
@@ -36,7 +36,7 @@
 
         <div class="form__field">
             <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Password</span></label>
-            <input id="login__password_repeat" type="password" name="password2" class="form__input" placeholder="Confirm Password" required>
+            <input id="login__password_repeat" type="password" name="password" class="form__input" placeholder="Confirm Password" required>
         </div>
 
         <div class="form__field">
