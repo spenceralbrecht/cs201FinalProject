@@ -321,7 +321,7 @@ import =  "java.util.Map"%>
         return false;
     });
 
-
+    $("#name").append(username);
 
 </script>
 </body>
