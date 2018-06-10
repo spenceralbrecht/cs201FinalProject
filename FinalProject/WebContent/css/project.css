@@ -189,6 +189,8 @@ body {
 .tdl-holder{
     width: 300px;
     overflow: auto;
+    height:  200px;
+    margin: auto;
 }
 
 .tdl-holder h2{
@@ -197,7 +199,7 @@ body {
     border-top-right-radius: 4px;
     color:#fff;
     font-family:"building", Arial, sans-serif;
-    font-size:16px;
+    font-size: 22px;
     font-weight: 100;
     line-height: 56px;
     padding-left: 15px;
@@ -213,7 +215,9 @@ body {
 }
 
 .progress{
-    position: sticky;}
+    position: sticky;
+    margin-top:  10px;
+    }
 
 .ProjectTasks{
     float:left;
@@ -274,11 +278,13 @@ body {
 
 .tdl-holder label:hover a{
     display: block;
+    /* width: 20px; */
 }
 
 .tdl-holder label a:hover{
     background-color:#fff;
     color:#de3f53;
+    /* width:  100%; */
 }
 
 .tdl-holder input[type="checkbox"]{
@@ -322,14 +328,15 @@ body {
     border-bottom-right-radius: 4px;
     box-shadow: inset 0 0 8px 0 #0e1329;
     color: #464f72;
-    font-size:14px;
+    font-size: 20px;
     margin:0;
     padding:20px 15px;
-    width:270px;
+    width: 100%;
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
     -o-transition: all .2s linear;
     transition: all .2s linear;
+    height: 60px;
 }
 
 .tdl-holder input[type="text"]:hover{
