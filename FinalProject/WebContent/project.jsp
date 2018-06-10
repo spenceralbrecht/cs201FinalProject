@@ -33,8 +33,12 @@
 <!-- side bar -->
 <div id="mySidenav" class="sidenav">
     <img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100"/>
-    <a id="name" href="profile.jsp">Jinpeng He</a>
+    <a id="name">Jinpeng He</a>
     <span id="projectDirection"></span>
+    <form action="createProject.jsp" method="POST" class="form create project">
+        <a id="createProject">Create a Project</a>
+        <input id="createProjectBar" type="text" name="projectName" class="form__input" placeholder="Project Code">
+    </form>
     <a id="logoutButton" href="login.jsp">Log out</a>
 </div>
 
@@ -43,8 +47,12 @@
     <div class="header">
         <h1><a href="#">CheckMate</a></h1>
         <i class="fas fa-check-square fa-4x"></i>
+        <span id="searchBar">
         <i id="searchProjectButton" class="fas fa-search fa-4x"></i>
-        <input class="searchProjectCode" type="text" name="projectCode">
+        <form action="searchProject.jsp" method="POST" class="form-search-project">
+        <input class="searchProjectCode" type="text" required>
+        </form>
+        </span>
     </div>
     <div onclick="changeNav()"><i id="navButton" class="fas fa-arrow-right fa-7x"></i></div>
     <!-- content -->
@@ -142,6 +150,7 @@
             if (s == ""){
                 return false;
             }else{
+                console.log("111");
                 $(".tdl-content ul").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a href='#'>+</a></label></li>");
                 $(this).val("");
             }
@@ -152,7 +161,7 @@
     // when you add a task into your task list;
     $(".tdl-content").on('click', "a", function(){
         var _li = $(this).parent().parent("li");
-        $(".tdl-content1 ul").append("<li><label><input type=\"checkbox\" checked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
+        $(".tdl-content1 ul").append("<li><label><input type=\"checkbox\" unchecked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
         $(this).val("");
         _li.addClass("remove").stop().delay(100).slideUp("fast", function(){
             _li.remove();
