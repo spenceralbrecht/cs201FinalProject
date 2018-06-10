@@ -1,25 +1,27 @@
 function addTaskInDatabase(title, projectID) {
 
-	var url = "updateDatabase.java";
+	var url = "UpdateDatabase";
 	var type = "addTask";
 
 	$.ajax({
-		type : "POST",
-		data : 'queryType=' + type + '&title=' + title + '&projectID='
-				+ projectID,
+		type : "GET",
 		url : url,
-
+		data : {
+			queryType: type,
+			title: title,
+			projectID: projectID,
+		},
+//		data : 'queryType=' + type + '&title=' + title + '&projectID='+ projectID,
 		// Runs once the request returns
 		success : function(content) {
 			console.log("updated task in database");
 			// 	                  sendUpdateToAllOtherUsers();
 		}
 	});
-
 }
 
 function markCompletedInDatabase(userID, taskID) {
-	var url = "updateDatabase.java";
+	var url = "UpdateDatabase.java";
 	var type = "markCompleted";
 
 	$.ajax({
@@ -36,7 +38,7 @@ function markCompletedInDatabase(userID, taskID) {
 }
 
 function assignTaskInDatabase(userID, taskID) {
-	var url = "updateDatabase.java";
+	var url = "UpdateDatabase.java";
 	var type = "assignTask";
 
 	$.ajax({
@@ -52,20 +54,12 @@ function assignTaskInDatabase(userID, taskID) {
 	});
 }
 
-function getProjectID() {
-	var url = "loadProjectData.java";
-	var type = "getProjectID";
+function generateCode() {
+	  var text = "";
+	  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-	$.ajax({
-		type : "POST",
-		data : 'queryType=' + type + '&userID=' + userID + 'taskID=' + taskID,
-		url : url,
+	  for (var i = 0; i < 6; i++)
+	    text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-		// Runs once the request returns
-		success : function(content) {
-			console.log("got project ID from database");
-			return content.getParameter("projectID");
-			// 	        		sendUpdateToAllOtherUsers();
-		}
-	});
+	  return text;
 }
