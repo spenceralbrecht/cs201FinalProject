@@ -1,6 +1,7 @@
 package database;
 
 import java.io.BufferedReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -76,7 +77,10 @@ public class UpdateDatabase extends HttpServlet {
 				if (option.equals("assignTask")) {
 					preparedStatement = conn.prepareStatement("UPDATE Task SET userID =? WHERE taskID =? ");
 					preparedStatement.setInt(1, userID);
-					preparedStatement.setInt(2, taskID);	
+					preparedStatement.setInt(2, taskID);
+					int numT = (int) request.getSession().getAttribute("numTasks");
+					request.getSession().removeAttribute("numTasks");
+					request.getSession().setAttribute("numTasks", numT++);
 				}
 				// Mark a task as completed
 				if (option.equals("markCompleted")) {
@@ -84,7 +88,7 @@ public class UpdateDatabase extends HttpServlet {
 		            preparedStatement.setInt(1, taskID);
 		            preparedStatement.setBoolean(2, true);
 				}	
-				preparedStatement.executeQuery();
+				preparedStatement.executeUpdate();
 				
 			}
 				
