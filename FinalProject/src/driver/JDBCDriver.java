@@ -1,5 +1,6 @@
 package driver;
 
+import java.io.PrintWriter;
 import java.sql.*;
 
 import javax.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import com.mysql.jdbc.Connection;
 public class JDBCDriver {
 	private static Connection conn = null;
 	private static ResultSet rs = null;
+	private static PrintWriter pw = null;
 	private static PreparedStatement ps = null;
 	private static int userID = 0;
 	
@@ -51,11 +53,11 @@ public class JDBCDriver {
 			ps = conn.prepareStatement("SELECT pw, userID FROM User WHERE username=?");
 			ps.setString(1, usr);
 			rs = ps.executeQuery();
-			//System.out.println(rs);
+			System.out.println(rs);
 			//HttpSession session = null;
 			if(rs.next()){
 				if(pwd.equals(rs.getString("pw")) ){
-					//userID = (rs.getInt("userID"));
+					
 					return true;
 				
 				}
@@ -73,7 +75,7 @@ public class JDBCDriver {
 		try {
 			ps = conn.prepareStatement("SELECT userID FROM User WHERE username=? AND pw=?");
 			ps.setString(1, username);
-			ps.setString(1, password);
+			ps.setString(2, password);
 			rs = ps.executeQuery();
 			System.out.println(rs);
 			//HttpSession session = null;
@@ -91,15 +93,14 @@ public class JDBCDriver {
 	public static int getNumTasks(int userID) {
 		connect();
 		try {
-			ps = conn.prepareStatement("SELECT * FROM User u, Task t WHERE t.userID=? AND t.completed=?");
+			ps = conn.prepareStatement("SELECT  DISTINCT t.taskID,t.userID,t.title,t.projectID FROM User u, Task t WHERE t.userID=? AND t.completed=?");
 			ps.setInt(1, userID);
-			ps.setBoolean(1, false);
+			ps.setBoolean(2, false);
 			rs = ps.executeQuery();
 			System.out.println(userID);
 			int counter =0;
-			if(rs.next()){
+			while(rs.next()){
 				String title = rs.getString("title");
-				System.out.println(title);
 				counter++;
 			}
 			return counter;
