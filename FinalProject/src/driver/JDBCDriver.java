@@ -73,7 +73,7 @@ public class JDBCDriver {
 	public static int getUserID() {
 		return userID;
 	}
-
+	//for sign up page
 	public static boolean validateSignup(String usr, String password){
 		connect();
 		try {
@@ -82,11 +82,14 @@ public class JDBCDriver {
 			rs = ps.executeQuery();
 			System.out.println(rs);
 			if(rs.next()){
-				return true;
+				return true; //user exists
 			}
-			else {
-				ps = conn.prepareStatement("INSERT username FROM User WHERE username=?");
+			else { //create new user
+				ps = conn.prepareStatement("INSERT INTO User (username, pw) VALUES (?,?)");
 				ps.setString(1, usr);
+				ps.setString(2, password);
+				ps.executeUpdate();
+				return false;
 			}
 		} catch (SQLException e) {
 			System.out.println("SQLException in function \"validate\"");
