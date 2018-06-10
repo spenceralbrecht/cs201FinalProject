@@ -17,7 +17,7 @@
 			else if( ! JDBCDriver.validateSignup(username, request.getParameter("password"))){
 				request.getSession().setAttribute("username", username);
 				//request.getSession().setAttribute("userID", JDBCDriver.getUserID());
-				//request.getSession().setAttribute("numTasks")
+				request.getSession().setAttribute("numTasks",(int) 0);
 				request.getSession().setAttribute("authenticated", "yes");
 				response.sendRedirect("profile.jsp");
 			}else{
