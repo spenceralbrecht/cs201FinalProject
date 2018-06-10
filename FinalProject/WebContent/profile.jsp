@@ -36,7 +36,7 @@
 <!-- side bar -->
 <div id="mySidenav" class="sidenav">
     <img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100"/>
-    <a id="name">Jinpeng He</a>
+    <a id="name"><%= request.getSession().getAttribute("username") %></a>
     <span id="projectDirection"></span>
     <form action="createProject.jsp" method="POST" class="form create project">
         <a id="createProject">Create a Project</a>
@@ -103,9 +103,22 @@
     <%}
     %>
 
-    function jumpToProject(i){
-        request.getSession().setAttribute("projectID",i);
-        location.href = "LoadProjectData";
+    function jumpToProject(projectID, userID){
+			var url = "LoadProjectData";
+			$.ajax({
+				type : "GET",
+				url : url,
+				data : {
+					projectID: projectID,
+					userID: userID,
+				},
+				// Runs once the request returns
+				success : function(content) {
+					console.log("going to swervlet");
+					location.href = "project.jsp";
+					// 	                  sendUpdateToAllOtherUsers();
+				}
+			});
     }
 
 
