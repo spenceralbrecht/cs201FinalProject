@@ -1,4 +1,5 @@
-<%--
+<%@ page import="check.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: lofnheart
   Date: 6/3/18
@@ -93,9 +94,14 @@
     }
     // adding task in side nav bar
     var userProjects;
-    for (var i = 0; i < 3; i++){
-        $("#projectDirection").append("<a href=''>" + "project " + i + "</a>");
-    }
+    <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
+    for (int i = 0; i < userProjects.size(); i++){ %>
+        $("#projectDirection").append("<a href='project.jsp?projectID="+ "<%=userProjects.get(i).getID()%>"+"'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+
+    <%}
+    %>
+
+
 
     //container adding
     $("#container").append("<h1>Hi " + username + ",</h1><br>" + "<h2> You have <span class=\"odometer\">" + tasks + "</span> tasks to do today</h2>");
@@ -107,9 +113,9 @@
         duration: 1000
     });
     odometer.render();
-    $("#createProjectBar").toggle();
-    $('.odometer').text(tasks);
 
+    $('.odometer').text(tasks);
+    $("#createProjectBar").toggle();
     $('#createProject').click(function () {
         $("#createProjectBar").toggle();
         return false;

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="check.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: lofnheart
   Date: 6/3/18
@@ -168,6 +169,21 @@
         });
         return false;
     });
+
+    $("#createProjectBar").toggle();
+    $('#createProject').click(function () {
+        $("#createProjectBar").toggle();
+        return false;
+    });
+
+    // adding task in side nav bar
+    var userProjects;
+    <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
+    for (int i = 0; i < userProjects.size(); i++){ %>
+    $("#projectDirection").append("<a href='project.jsp?projectID="+ "<%=userProjects.get(i).getID()%>"+"'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+
+    <%}
+    %>
 
 </script>
 </body>
