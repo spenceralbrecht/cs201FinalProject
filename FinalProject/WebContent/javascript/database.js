@@ -21,7 +21,7 @@ function addTaskInDatabase(title, projectID) {
 }
 
 function markCompletedInDatabase(userID, taskID) {
-	var url = "UpdateDatabase.java";
+	var url = "UpdateDatabase";
 	var type = "markCompleted";
 
 	$.ajax({
@@ -38,7 +38,7 @@ function markCompletedInDatabase(userID, taskID) {
 }
 
 function assignTaskInDatabase(userID, taskID) {
-	var url = "UpdateDatabase.java";
+	var url = "UpdateDatabase";
 	var type = "assignTask";
 
 	$.ajax({
