@@ -192,7 +192,7 @@
         return false;
     });
 
-
+    $("#name").append(username);
 
 </script>
 </body>

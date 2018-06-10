@@ -20,7 +20,7 @@ public class JDBCDriver {
 		try {
 	
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=password!&useSSL=false");
+			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=root&useSSL=false");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -163,11 +163,11 @@ public class JDBCDriver {
 		}
 		return userprojects;
 	}
-	public static boolean projectExistence(int projectID){
+	public static boolean projectExistence(int pID){
 		connect();
 		try {
-			ps = conn.prepareStatement("SELECT FROM Project WHERE projectID=?");
-			ps.setInt(1, projectID);
+			ps = conn.prepareStatement("SELECT p.projectID FROM Project p WHERE p.projectID=?");
+			ps.setInt(1, pID);
 			rs = ps.executeQuery();
 			System.out.println(rs);
 			//HttpSession session = null;

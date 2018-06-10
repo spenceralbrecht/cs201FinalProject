@@ -36,7 +36,7 @@
 <!-- side bar -->
 <div id="mySidenav" class="sidenav">
     <img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100"/>
-    <a id="name">Jinpeng He</a>
+    <a id="name"></a>
     <span id="projectDirection"></span>
     <form action="createProject.jsp" method="POST" class="form create project">
         <a id="createProject">Create a Project</a>
@@ -109,7 +109,7 @@
     }
 
 
-
+    $("#name").append(username);
 
 
     //container adding
