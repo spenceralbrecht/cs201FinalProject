@@ -1,4 +1,5 @@
-<%--
+<%@ page import="check.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: lofnheart
   Date: 6/3/18
@@ -35,9 +36,14 @@
 <!-- side bar -->
 <div id="mySidenav" class="sidenav">
     <img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100"/>
-    <a id="name">Jinpeng He</a>
+
+    <a id="name"><%= request.getSession().getAttribute("username") %></a>
+
     <span id="projectDirection"></span>
-    <a >
+    <form action="createProject.jsp" method="POST" class="form create project">
+        <a id="createProject">Create a Project</a>
+        <input id="createProjectBar" type="text" name="projectName" class="form__input" placeholder="Project Code">
+    </form>
     <a id="logoutButton" href="login.jsp">Log out</a>
 </div>
 
@@ -47,8 +53,12 @@
     <div class="header">
         <h1><a href="#">CheckMate</a></h1>
         <i class="fas fa-check-square fa-4x"></i>
+        <span id="searchBar">
         <i id="searchProjectButton" class="fas fa-search fa-4x"></i>
-        <input class="searchProjectCode" type="text" name="projectCode">
+        <form action="searchProject.jsp" method="POST" class="form-search-project">
+        <input class="searchProjectCode" type="text" required>
+        </form>
+        </span>
     </div>
     <div onclick="changeNav()"><i id="navButton" class="fas fa-arrow-right fa-7x"></i></div>
     <!-- content -->
@@ -58,10 +68,14 @@
 </div>
 <script>
     var isOpen = false;
-    var tasks = 100;//how many tasks total user needs to do;
-    var username = "James"; //first name
-    var Projects = null;//should be a project array.
-    var user;
+    <%int numTasks  =(int) request.getSession().getAttribute("numTasks");%>
+	console.log("<%=numTasks%>");
+    var tasks = "<%=numTasks%>";
+    //how many tasks total user needs to do;
+	<%String usr  =(String) request.getSession().getAttribute("username");%>
+	console.log("<%=usr%>");
+	var username = "<%=usr%>";
+
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
@@ -80,8 +94,41 @@
         if (isOpen) closeNav();
         else openNav();
     }
+    // adding task in side nav bar
+
+
+    var userProjects;
+    <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
+    for (int i = 0; i < userProjects.size(); i++){ %>
+    $("#projectDirection").append("<a href='#' onclick='jumpToProject(\"<%=userProjects.get(i).getID()%>\")" + "'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+
+    <%}
+    %>
+
+    function jumpToProject(projectID, userID){
+			var url = "LoadProjectData";
+			$.ajax({
+				type : "GET",
+				url : url,
+				data : {
+					projectID: projectID,
+					userID: userID,
+				},
+				// Runs once the request returns
+				success : function(content) {
+					console.log("going to swervlet");
+					location.href = "project.jsp";
+					// 	                  sendUpdateToAllOtherUsers();
+				}
+			});
+    }
+
+
+    $("#name").append(username);
+
+
     //container adding
-    $("#container").append("<h1>Hi "+ username + ",</h1><br>" + "<h2> You have <span class=\"odometer\">" + tasks + "</span> tasks to do today</h2>");
+    $("#container").append("<h1>Hi " + username + ",</h1><br>" + "<h2> You have <span class=\"odometer\">" + tasks + "</span> tasks to do today</h2>");
     //odometer
     var odometer = new Odometer({
         el: $('.odometer')[0],
@@ -92,6 +139,11 @@
     odometer.render();
 
     $('.odometer').text(tasks);
+    $("#createProjectBar").toggle();
+    $('#createProject').click(function () {
+        $("#createProjectBar").toggle();
+        return false;
+    });
 </script>
 </body>
 </html>

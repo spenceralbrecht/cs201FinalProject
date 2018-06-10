@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class loadProjectData
  */
-@WebServlet("/loadProjectData")
+@WebServlet("/UpdateDatabase")
 public class UpdateDatabase extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -57,13 +57,15 @@ public class UpdateDatabase extends HttpServlet {
 			if (option.equals("addTask")) {
 				String title  = request.getParameter("title");
 				int projectID = Integer.valueOf(request.getParameter("projectID"));
+				System.out.println("title = "+title);
+				System.out.println("project id "+projectID);
 				
 //				preparedStatement = conn.prepareStatement("INSERT INTO Task(title, projectID, userID) VALUES ('"+title+"',"+ projectID + "',null");
+				String query = "INSERT INTO Task (title, projectID) VALUES(?, ?)";
 				
-				preparedStatement = conn.prepareStatement("INSERT INTO Task SET title =? projectID =? userID =? ");
+				preparedStatement = conn.prepareStatement(query);
 				preparedStatement.setString(1, title);
 				preparedStatement.setInt(2, projectID);
-				preparedStatement.setString(3, "null");
 				
 				// Execute the SQL command for adding a task to the database
 				preparedStatement.executeUpdate();				
@@ -112,8 +114,6 @@ public class UpdateDatabase extends HttpServlet {
 				System.out.println(sqle.getMessage());
 			}
 		}
-		RequestDispatcher dispatch = getServletContext().getRequestDispatcher(projectJSP);
-		dispatch.forward(request, response);
 	}
 
 }

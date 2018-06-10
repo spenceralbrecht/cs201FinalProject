@@ -3,17 +3,17 @@ import java.util.ArrayList;
 
 public class Project {
 	private String title;
-	private int code;
+	private int id;
 	private ArrayList<User> users;
 	private ArrayList<Task> tasks;
 	
-	public Project(String title, int code) {
+	public Project(String title, int id) {
 		this.title = title;
 		this.users = null;
-		this.code = code; 
+		this.id = id; 
 	}
-	public int getCode() {
-		return code;
+	public int getID() {
+		return id;
 	}
 	public String getTitle() {
 		return title;

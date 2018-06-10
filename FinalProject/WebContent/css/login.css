@@ -200,6 +200,7 @@ input[type='submit'] {
     background-color: var(--loginInputBackgroundColor);
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    height: 48px;
 }
 
 .login input[type='password']:focus,
