@@ -5,14 +5,13 @@ import java.sql.*;
 import check.*;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpSession;
+
 
 import com.mysql.jdbc.Connection;
 
 public class JDBCDriver {
 	private static Connection conn = null;
 	private static ResultSet rs = null;
-	private static PrintWriter pw = null;
 	private static PreparedStatement ps = null;
 	private static int userID = 0;
 	
@@ -102,7 +101,6 @@ public class JDBCDriver {
 			System.out.println(userID);
 			int counter =0;
 			while(rs.next()){
-				String title = rs.getString("title");
 				counter++;
 			}
 			return counter;
