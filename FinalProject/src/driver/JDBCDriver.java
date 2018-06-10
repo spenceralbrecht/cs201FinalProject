@@ -162,7 +162,26 @@ public class JDBCDriver {
 			close();
 		}
 		return userprojects;
-	} 
+	}
+	public static boolean projectExistence(int projectID){
+		connect();
+		try {
+			ps = conn.prepareStatement("SELECT FROM Project WHERE projectID=?");
+			ps.setInt(1, projectID);
+			rs = ps.executeQuery();
+			System.out.println(rs);
+			//HttpSession session = null;
+			if(rs.next()){
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("SQLException in function \"projectExists\"");
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return false;		
+	}
 	
 
 }
