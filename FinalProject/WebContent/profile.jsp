@@ -5,7 +5,7 @@
   Time: 1:35 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" import="driver.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,10 +56,16 @@
 
     </div>
 </div>
+
 <script>
     var isOpen = false;
     var tasks = 100;//how many tasks total user needs to do;
-    var username = "James"; //first name
+	<%String usr  =(String) request.getSession().getAttribute("username");%>
+	console.log("<%=usr%>");
+	var username = "<%=usr%>";
+
+    
+    
     var Projects = null;//should be a project array.
     var user;
     function openNav() {

@@ -2,12 +2,15 @@ package driver;
 
 import java.sql.*;
 
+import javax.servlet.http.HttpSession;
+
 import com.mysql.jdbc.Connection;
 
 public class JDBCDriver {
 	private static Connection conn = null;
 	private static ResultSet rs = null;
 	private static PreparedStatement ps = null;
+	private static int userID = 0;
 	
 	public static void connect(){
 		try {
@@ -45,13 +48,18 @@ public class JDBCDriver {
 	public static boolean validate(String usr, String pwd){
 		connect();
 		try {
-			ps = conn.prepareStatement("SELECT pw FROM User WHERE username=?");
+			ps = conn.prepareStatement("SELECT pw, userID FROM User WHERE username=?");
 			ps.setString(1, usr);
 			rs = ps.executeQuery();
 			System.out.println(rs);
+			//HttpSession session = null;
 			if(rs.next()){
 				if(pwd.equals(rs.getString("pw")) ){
+					userID = (rs.getInt("userID"));
+					//session.setAttribute("username", usr);
+					//session.setAttribute("userID", userID);
 					return true;
+				
 				}
 			}
 		} catch (SQLException e) {
@@ -62,6 +70,10 @@ public class JDBCDriver {
 		}
 		return false;		
 	}
+	public static int getUserID() {
+		return userID;
+	}
+
 	public static boolean validateSignup(String usr, String password){
 		connect();
 		try {

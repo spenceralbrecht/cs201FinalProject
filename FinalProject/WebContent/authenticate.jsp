@@ -13,6 +13,8 @@
 		System.out.println(username+ " "+request.getParameter("password"));
 		if( JDBCDriver.validate(username, request.getParameter("password"))){
 			request.getSession().setAttribute("username", username);
+			//request.getSession().setAttribute("userID", JDBCDriver.getUserID());
+			//request.getSession().setAttribute("numTasks")
 			request.getSession().setAttribute("authenticated", "yes");
 			response.sendRedirect("profile.jsp");
 		}else{
