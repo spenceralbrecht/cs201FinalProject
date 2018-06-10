@@ -93,13 +93,22 @@
         else openNav();
     }
     // adding task in side nav bar
+
+
     var userProjects;
     <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
     for (int i = 0; i < userProjects.size(); i++){ %>
-        $("#projectDirection").append("<a href='project.jsp?projectID="+ "<%=userProjects.get(i).getID()%>"+"'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+    $("#projectDirection").append("<a href='#' onclick='jumpToProject(\"<%=userProjects.get(i).getID()%>\")" + "'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
 
     <%}
     %>
+
+    function jumpToProject(i){
+        request.getSession().setAttribute("projectID",i);
+        location.href = "LoadProjectData";
+    }
+
+
 
 
 

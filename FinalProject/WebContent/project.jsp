@@ -76,7 +76,7 @@
                     </ul>
                 </div>
                 <div class="progress">
-                    <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-dark progress-bar-striped"style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="tdl-holder">
@@ -139,6 +139,22 @@
         if (isOpen) closeNav();
         else openNav();
     }
+
+
+    var userProjects;
+    <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
+    for (int i = 0; i < userProjects.size(); i++){ %>
+    $("#projectDirection").append("<a href='#' onclick='jumpToProject(\"<%=userProjects.get(i).getID()%>\")" + "'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+
+    <%}
+    %>
+
+    function jumpToProject(i){
+        request.getSession().setAttribute("projectID",i);
+        location.href = "LoadProjectData";
+    }
+
+
 
     /* TO DO LIST */
 
