@@ -51,7 +51,7 @@ public class LoadProjectData extends HttpServlet {
 			// Needed to import MySQL driver code
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = (Connection) DriverManager
-					.getConnection("jdbc:mysql://localhost/Users?user=root&password=spencer&useSSL=false");
+					.getConnection("jdbc:mysql://localhost/Users?user=root&password=password!&useSSL=false");
 
 			int projectID = Integer.parseInt(request.getParameter("projectID"));
 			int userID = (int) request.getSession().getAttribute(("userID"));
@@ -64,10 +64,12 @@ public class LoadProjectData extends HttpServlet {
 
 			ArrayList<Integer> userIDs = new ArrayList<Integer>();
 			ArrayList<String> userNames = new ArrayList<String>();
-
+			int i = 0;
 			while (resultSet.next()) {
 				userIDs.add(resultSet.getInt("userID"));
 				userNames.add(resultSet.getString("username"));
+				System.out.println(userNames.get(i));
+				i++;
 			}
 
 			request.getSession().setAttribute("userNames", userNames);
@@ -81,11 +83,16 @@ public class LoadProjectData extends HttpServlet {
 				preparedStatement.setInt(2, projectID);
 
 				Map<String, Boolean> results = new HashMap<String, Boolean>();
-				String userName = "";
+				String userName =userNames.get(userIDNum-1);
 				// Execute the query and get the result in a table
 				resultSet = preparedStatement.executeQuery();
+				if(!resultSet.next()) {
+					results.put(null, null);
+
+				}
+				
 				while (resultSet.next()) {
-					userName = resultSet.getString("username");
+					//userName = resultSet.getString("username");
 					//userNames.add(userName);
 					String title = resultSet.getString("title");
 					Boolean completed = resultSet.getBoolean("completed");
@@ -93,7 +100,12 @@ public class LoadProjectData extends HttpServlet {
 				}
 				userTaskMap.put(userName, results);
 			}
-
+			/*if(resultSet != null) {
+				resultSet.close();
+			}
+			if(preparedStatement != null) {
+				preparedStatement.close();
+			}*/
 			// Sets the attribute for the list of tasks for each user
 			request.getSession().setAttribute("userTaskMap", userTaskMap);
 
@@ -101,7 +113,7 @@ public class LoadProjectData extends HttpServlet {
 
 			// Get all unassigned tasks in a specific project
 			preparedStatement = conn.prepareStatement(
-					"SELECT DISTINCT t.taskID,t.userID,t.title,t.projectID FROM Task t WHERE t.projectID=? AND t.userID=?");
+					"SELECT DISTINCT t.taskID, t.userID, t.title, t.projectID FROM Task t WHERE t.projectID=? AND t.userID=?");
 			preparedStatement.setInt(1, projectID);
 			preparedStatement.setInt(2, userID);
 
