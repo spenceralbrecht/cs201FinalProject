@@ -57,7 +57,9 @@ import =  "java.util.Map"%>
 				var title = document.createElement('h2');
 				title.innerHTML = "<%= userNames.get(i) %>";
 				userCard.appendChild(title);
-				var content = document.getElementById("tdl-content"+parseInt(<%=i%>+1));
+<%-- 				var content = document.getElementById("tdl-content"+parseInt(<%=i%>+1)); --%>
+				var content = document.createElement('div');
+				content.className = "tdl-content"+parseInt(<%=i%>+1);
 				
 		<%
 				Map<String, Boolean> userTasks = userTaskMap.get(userNames.get(i));
@@ -80,11 +82,11 @@ import =  "java.util.Map"%>
 			<%			
 					}
 			%>				
-				// Adds users tasks to the card
-					userCard.appendChild(content); 
 			<%
 				}
 			%>
+				// Adds users tasks to the card
+				userCard.appendChild(content); 
 				
 				// Add the progress bar
 				var progressBarDiv = document.createElement('div');
@@ -258,10 +260,23 @@ import =  "java.util.Map"%>
     <%}
     %>
 
-    function jumpToProject(i){
-        request.getSession().setAttribute("projectID",i);
-        location.href = "LoadProjectData";
-    }
+    function jumpToProject(projectID, userID){
+		var url = "LoadProjectData";
+		$.ajax({
+			type : "GET",
+			url : url,
+			data : {
+				projectID: projectID,
+				userID: userID,
+			},
+			// Runs once the request returns
+			success : function(content) {
+				console.log("going to swervlet");
+				location.href = "project.jsp";
+				// 	                  sendUpdateToAllOtherUsers();
+			}
+		});
+}
 
 
 
