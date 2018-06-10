@@ -9,16 +9,21 @@
 	<body>
 		<% 
 		String username = request.getParameter("username");
-		System.out.println("inside authenticate");
+		System.out.println("inside authenticate login");
 		System.out.println(username+ " "+request.getParameter("password"));
 		if( JDBCDriver.validate(username, request.getParameter("password"))){
 			request.getSession().setAttribute("username", username);
+			int userID = JDBCDriver.getUserID(username, request.getParameter("password"));
+			request.getSession().setAttribute("userID", userID);
+			int numTasks = JDBCDriver.getNumTasks(userID);
+			request.getSession().setAttribute("numTasks", numTasks);
 			request.getSession().setAttribute("authenticated", "yes");
 			response.sendRedirect("profile.jsp");
 		}else{
 			request.setAttribute("errmsg", "Invalid username and password.");
 			response.sendRedirect("login.jsp");
 		}
+		
 	%>
 	</body>
 </html>

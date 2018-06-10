@@ -23,14 +23,12 @@
 <div class="header">
 <span class="title">CheckMate</span>
 
+
+
 <div class="grid">
 	<span style="color: red;font-weight:bold">${errmsg!=null? errmsg : ''}</span><br>
     <form action="authenticate.jsp" method="POST" class="form login" >
 
-
-</div>
-<div class="grid">
-    <form action="https://httpbin.org/post" method="POST" class="form login">
 
 
         <div class="form__field">
