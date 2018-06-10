@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import ="driver.*"%>
+    pageEncoding="UTF-8" import ="driver.*" import ="check.*" import ="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -16,6 +16,10 @@
 			int userID = JDBCDriver.getUserID(username, request.getParameter("password"));
 			request.getSession().setAttribute("userID", userID);
 			int numTasks = JDBCDriver.getNumTasks(userID);
+			request.getSession().setAttribute("numTasks", numTasks);
+			ArrayList<Project> userP = new ArrayList<Project>();
+			userP = JDBCDriver.getuserProjects(userID);
+			request.getSession().setAttribute("userProjects", userP);
 			request.getSession().setAttribute("numTasks", numTasks);
 			request.getSession().setAttribute("authenticated", "yes");
 			response.sendRedirect("profile.jsp");
