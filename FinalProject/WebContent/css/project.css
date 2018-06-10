@@ -42,6 +42,7 @@ body {
     display: grid;
     grid-template-columns: auto auto;
     grid-column-gap: 10px;
+    height: 700px;
 }
 #container h1{
     color: var(--containerFontHoverBackgroundColor);
@@ -203,8 +204,14 @@ body {
 .tdl-holder{
     width: 300px;
     overflow: auto;
-    height:  200px;
+    height: 300px;
     margin: auto;
+    background: #14588e;
+    margin-top:  15px;
+    padding: 10px;
+    border-radius:  10px;
+    margin-left:  10px;
+    margin-right:  10px;
 }
 
 .tdl-holder h2{
@@ -221,8 +228,8 @@ body {
 }
 
 .UsersTask{
-    width:70%;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     float:left;
     display: grid;
     grid-template-columns:auto auto auto;
@@ -412,3 +419,5 @@ input[type="text"]{
     position: fixed;
     margin-left: 900px;
 }
+
+#projectTasksList {display: inline-table;height: 0%;}

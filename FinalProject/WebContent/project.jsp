@@ -194,19 +194,9 @@ import =  "java.util.Map"%>
 					<!--                     <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
 					<!--                 </div> -->
 				</div>
-				<div id="userCard7" class="tdl-holder">
-					<!--                 <h2>User 3</h2> -->
-					<!--                 <div class="tdl-content4"> -->
-					<!--                     <ul> -->
-					<!--                     </ul> -->
-					<!--                 </div> -->
-					<!--                 <div class="progress"> -->
-					<!--                     <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
-					<!--                 </div> -->
-				</div>
 			</div>
 			<div class="ProjectTasks">
-				<div class="tdl-holder">
+				<div id="projectTasksList" class="tdl-holder">
 					<h2>Unassigned Tasks</h2>
 					<div class="tdl-content">
 						<ul>
