@@ -1,4 +1,5 @@
-<%--
+<%@ page import="check.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: lofnheart
   Date: 6/3/18
@@ -65,10 +66,13 @@
 </div>
 <script>
     var isOpen = false;
-    var tasks = 100;//how many tasks total user needs to do;
-    var username = "James"; //first name
-    var Projects = null;//should be a project array.
-    var user;
+    <%int numTasks  =(int) request.getSession().getAttribute("numTasks");%>
+	console.log("<%=numTasks%>");
+    var tasks = "<%=numTasks%>";
+    //how many tasks total user needs to do;
+	<%String usr  =(String) request.getSession().getAttribute("username");%>
+	console.log("<%=usr%>");
+	var username = "<%=usr%>";
 
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -89,10 +93,24 @@
         else openNav();
     }
     // adding task in side nav bar
+
+
     var userProjects;
-    for (var i = 0; i < 3; i++){
-        $("#projectDirection").append("<a href=''>" + "project " + i + "</a>");
+    <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
+    for (int i = 0; i < userProjects.size(); i++){ %>
+    $("#projectDirection").append("<a href='#' onclick='jumpToProject(\"<%=userProjects.get(i).getID()%>\")" + "'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+
+    <%}
+    %>
+
+    function jumpToProject(i){
+        request.getSession().setAttribute("projectID",i);
+        location.href = "LoadProjectData";
     }
+
+
+
+
 
     //container adding
     $("#container").append("<h1>Hi " + username + ",</h1><br>" + "<h2> You have <span class=\"odometer\">" + tasks + "</span> tasks to do today</h2>");
@@ -104,9 +122,9 @@
         duration: 1000
     });
     odometer.render();
-    $("#createProjectBar").toggle();
-    $('.odometer').text(tasks);
 
+    $('.odometer').text(tasks);
+    $("#createProjectBar").toggle();
     $('#createProject').click(function () {
         $("#createProjectBar").toggle();
         return false;

@@ -1,4 +1,5 @@
-<%--
+<%@ page import="check.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: lofnheart
   Date: 6/3/18
@@ -213,7 +214,6 @@ import =  "java.util.Map"%>
 		</div>
 	</div>
 	<script>
-
     var isOpen = false;
     var tasks = 100;//how many tasks total user needs to do;
     var username = "James"; //first name
@@ -237,6 +237,22 @@ import =  "java.util.Map"%>
         if (isOpen) closeNav();
         else openNav();
     }
+
+
+    var userProjects;
+    <%ArrayList<Project> userProjects  =(ArrayList<Project>) request.getSession().getAttribute("userProjects");
+    for (int i = 0; i < userProjects.size(); i++){ %>
+    $("#projectDirection").append("<a href='#' onclick='jumpToProject(\"<%=userProjects.get(i).getID()%>\")" + "'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
+
+    <%}
+    %>
+
+    function jumpToProject(i){
+        request.getSession().setAttribute("projectID",i);
+        location.href = "LoadProjectData";
+    }
+
+
 
     /* TO DO LIST */
 
@@ -272,6 +288,14 @@ import =  "java.util.Map"%>
         });
         return false;
     });
+
+    $("#createProjectBar").toggle();
+    $('#createProject').click(function () {
+        $("#createProjectBar").toggle();
+        return false;
+    });
+
+
 
 </script>
 </body>

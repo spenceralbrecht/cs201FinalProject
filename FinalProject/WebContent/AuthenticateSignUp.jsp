@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import ="driver.*"%>
+    pageEncoding="UTF-8" import ="driver.*" import ="check.*" import ="java.util.ArrayList"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,6 +19,8 @@
 				//request.getSession().setAttribute("userID", JDBCDriver.getUserID());
 				request.getSession().setAttribute("numTasks",(int) 0);
 				request.getSession().setAttribute("authenticated", "yes");
+				ArrayList<Project> userP = new ArrayList<Project>();
+				request.getSession().setAttribute("userProjects", userP);
 				response.sendRedirect("profile.jsp");
 			}else{
 				request.setAttribute("errmsg", "Username Exists.");

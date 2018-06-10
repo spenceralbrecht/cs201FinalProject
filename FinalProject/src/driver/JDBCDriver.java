@@ -2,6 +2,8 @@ package driver;
 
 import java.io.PrintWriter;
 import java.sql.*;
+import check.*;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
@@ -138,7 +140,29 @@ public class JDBCDriver {
 		}
 		return false;		
 	} 
-	
+	public static ArrayList<Project> getuserProjects(int userID){
+		connect();
+		ArrayList<Project> userprojects = new ArrayList<Project>();
+		try {
+			ps = conn.prepareStatement("SELECT DISTINCT p.projectID,p.ptitle,p.userID, up.projectID AS 'upppid',up.upID FROM UserProject up JOIN Project p WHERE up.userID=? AND up.projectID= p.projectID");
+			ps.setInt(1, userID);
+			rs = ps.executeQuery();
+			System.out.println(rs);
+			while(rs.next()){
+				String ptitle = rs.getString("ptitle");//user exists
+				int pID = rs.getInt("projectID");
+				Project p = new Project(ptitle, pID);
+				userprojects.add(p);
+			}
+			return userprojects;
+		} catch (SQLException e) {
+			System.out.println("SQLException in function \"validate\"");
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return userprojects;
+	} 
 	
 
 }
