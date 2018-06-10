@@ -65,7 +65,7 @@ public class UpdateDatabase extends HttpServlet {
 				preparedStatement.setString(3, "null");
 				
 				// Execute the SQL command for adding a task to the database
-				preparedStatement.executeQuery();				
+				preparedStatement.executeUpdate();				
 			}
 			else {
 				
@@ -84,7 +84,7 @@ public class UpdateDatabase extends HttpServlet {
 		            preparedStatement.setInt(1, taskID);
 		            preparedStatement.setBoolean(2, true);
 				}	
-				preparedStatement.executeQuery();
+				preparedStatement.executeUpdate();
 				
 			}
 				
