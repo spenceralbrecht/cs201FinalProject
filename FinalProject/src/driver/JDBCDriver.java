@@ -18,7 +18,7 @@ public class JDBCDriver {
 		try {
 	
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=spencer&useSSL=false");
+			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=c34sq53h3o&useSSL=false");
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -180,6 +180,34 @@ public class JDBCDriver {
 		}
 		return false;		
 	}
+	public static boolean userInProject(int pID, int userID)
+	{
+		connect();
+		try{
+			ps = conn.prepareStatement("SELECT p.userID FROM UserProject p WHERE p.projectID=? AND p.userID=?");
+			ps.setInt(1, pID);
+			ps.setInt(2, userID);
+			rs = ps.executeQuery();
+			System.out.println(rs);
+			//HttpSession session = null;
+			if(rs.next()) {
+				return true;
+			}
+			else {
+				ps = conn.prepareStatement("INSERT INTO UserProject (projectID, userID) VALUES(?, ?)");
+				ps.setInt(1, pID);
+				ps.setInt(2, userID);
+				ps.executeUpdate();
+			}
+
+		}catch (SQLException e) {
+				System.out.println("SQLException in function \"projectExists\"");
+				e.printStackTrace();
+			}finally{
+				close();
+			}
+			return false;
+		}
 	
 
 }
