@@ -28,7 +28,7 @@
 			request.getSession().setAttribute("authenticated", "yes");
 			response.sendRedirect("profile.jsp");
 		}else{
-			request.setAttribute("errmsg", "Invalid username and password.");
+			request.getSession().setAttribute("errmsg", "Invalid username and password.");
 			response.sendRedirect("login.jsp");
 		}
 	%>

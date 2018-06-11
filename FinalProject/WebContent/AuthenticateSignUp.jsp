@@ -11,7 +11,7 @@
 			System.out.println("inside authenticate sign up");
 			System.out.println(username+ " "+request.getParameter("password") + request.getParameter("password2"));
 			if (!(request.getParameter("password").equals(request.getParameter("password2")))){
-				request.setAttribute("errmsg", "Passwords must match.");
+				request.getSession().setAttribute("errmsg", "Passwords must match.");
 				response.sendRedirect("signup.jsp");
 			}
 			else if( ! JDBCDriver.validateSignup(username, request.getParameter("password"))){
@@ -23,7 +23,7 @@
 				request.getSession().setAttribute("userProjects", userP);
 				response.sendRedirect("profile.jsp");
 			}else{
-				request.setAttribute("errmsg", "Username Exists.");
+				request.getSession().setAttribute("errmsg", "Username Exists.");
 				response.sendRedirect("signup.jsp");
 			}
 	%>

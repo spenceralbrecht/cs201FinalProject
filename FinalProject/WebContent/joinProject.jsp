@@ -22,17 +22,15 @@
     System.out.println("userID: " + userID);
     if(JDBCDriver.projectExistence(projectID)) {
         if(!JDBCDriver.userInProject(projectID, userID)) {
-            System.out.println("send: " + projectID);
             request.getSession().setAttribute("projectID", projectID);
-            System.out.println("get: " + request.getSession().getAttribute("projectID"));
-            response.sendRedirect("LoadProjectData");
+            response.sendRedirect("LoadProjectData?projectID=" + projectID);
         }
         else{
             System.out.println("send: " + projectID);
             request.getSession().setAttribute("projectID", projectID);
             System.out.println("get: " + request.getSession().getAttribute("projectID"));
 
-            response.sendRedirect("LoadProjectData");
+            response.sendRedirect("LoadProjectData?projectID=" + projectID);
 
           }
     }else{

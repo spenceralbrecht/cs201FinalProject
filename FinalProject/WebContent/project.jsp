@@ -54,7 +54,7 @@ import =  "java.util.Map"%>
 				Map<String, Boolean> userTasks = userTaskMap.get(userNames.get(i));
 				ArrayList<String> tasksForUser = new ArrayList<String>();
 			
-				if (userTasks!=null) {
+				if (userTasks!=null && userTasks.size() > 1) {
 					System.out.println("userTasks="+userTasks);
 					userTasks.forEach((k, v) -> tasksForUser.add(k));
 					
@@ -71,11 +71,13 @@ import =  "java.util.Map"%>
 						checkbox.type = "checkbox";
 						var circle = document.createElement('i');
 						var span = document.createElement('span');
-			<%			
+			<%
+			if(tasksForUser != null){
 						if(userTasks.get(tasksForUser.get(j))){ 
 			%>
 							checkbox.checked;
-			<%			
+			<%
+						}
 						}
 			%>
 						span.innerHTML = "<%= tasksForUser.get(j) %>";
@@ -177,7 +179,11 @@ import =  "java.util.Map"%>
 	<!-- side bar -->
 	<div id="mySidenav" class="sidenav">
 		<img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png"
-			width="100" height="100" /> <a id="name" href="profile.jsp"><%=request.getSession().getAttribute("username") %></a> <span id="projectDirection"></span> <a id="logoutButton"
+			width="100" height="100" /> <a id="name" href="profile.jsp"><%=request.getSession().getAttribute("username") %></a> <span id="projectDirection"></span>
+		<form action="createProject.jsp" method="POST" class="form create project">
+			<a id="createProject">Create a Project</a>
+			<input id="createProjectBar" type="text" name="projectName" class="form__input" placeholder="Project Code">
+		</form><a id="logoutButton"
 			href="login.jsp">Log out</a>
 	</div>
 
@@ -189,7 +195,7 @@ import =  "java.util.Map"%>
 			</h1>
 			<i class="fas fa-check-square fa-4x"></i> <i id="searchProjectButton"
 				class="fas fa-search fa-4x"></i> <input class="searchProjectCode"
-				type="text" name="projectCode">
+				type="text" name="projectID">
 		</div>
 		<div onclick="changeNav()">
 			<i id="navButton" class="fas fa-arrow-right fa-7x"></i>
@@ -393,8 +399,6 @@ import =  "java.util.Map"%>
         $("#createProjectBar").toggle();
         return false;
     });
-
-    $("#name").append(username);
 
 </script>
 </body>
