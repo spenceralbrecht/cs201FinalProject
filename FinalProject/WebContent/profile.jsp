@@ -20,25 +20,12 @@
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/odometer-theme-default.css"/>
     <script src="javascript/odometer.min.js"></script>
-    <script>
-        /* Set the width of the side navigation to 250px */
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
-
-        /* Set the width of the side navigation to 0 */
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
 </head>
 <body>
 <!-- side bar -->
 <div id="mySidenav" class="sidenav">
     <img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png" width="100" height="100"/>
-
-    <a id="name"><%= request.getSession().getAttribute("username") %></a>
-
+    <a id="name"></a>
     <span id="projectDirection"></span>
     <form action="createProject.jsp" method="POST" class="form create project">
         <a id="createProject">Create a Project</a>
@@ -55,8 +42,8 @@
         <i class="fas fa-check-square fa-4x"></i>
         <span id="searchBar">
         <i id="searchProjectButton" class="fas fa-search fa-4x"></i>
-        <form action="searchProject.jsp" method="POST" class="form-search-project">
-        <input class="searchProjectCode" type="text" required>
+        <form action="joinProject.jsp" method="POST" class="form-search-project">
+        <input name="projectID" type="text" required>
         </form>
         </span>
     </div>
@@ -105,22 +92,9 @@
     <%}
     %>
 
-    function jumpToProject(projectID, userID){
-			var url = "LoadProjectData";
-			$.ajax({
-				type : "GET",
-				url : url,
-				data : {
-					projectID: projectID,
-					userID: userID,
-				},
-				// Runs once the request returns
-				success : function(content) {
-					console.log("going to swervlet");
-					location.href = "project.jsp";
-					// 	                  sendUpdateToAllOtherUsers();
-				}
-			});
+    function jumpToProject(i){
+        request.getSession().setAttribute("projectID",i);
+        location.href = "LoadProjectData";
     }
 
 
