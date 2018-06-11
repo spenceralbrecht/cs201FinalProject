@@ -59,7 +59,7 @@
                 Map<String, Boolean> userTasks = userTaskMap.get(userNames.get(i));
                 ArrayList<String> tasksForUser = new ArrayList<String>();
 
-                if (userTasks!=null) {
+                if (userTasks!=null && userTasks.size() > 1) {
                     System.out.println("userTasks="+userTasks);
                     userTasks.forEach((k, v) -> tasksForUser.add(k));
 
