@@ -1,29 +1,34 @@
-<%@ page import="check.Project" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="check.Project"%>
+<%@ page import="java.util.ArrayList"%><%--
   Created by IntelliJ IDEA.
   User: lofnheart
   Date: 6/3/18
   Time: 1:35 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import = "check.Task" import = "java.util.ArrayList" import = "java.util.HashMap"
-import =  "java.util.Map"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+	import="check.Task" import="java.util.ArrayList"
+	import="java.util.HashMap" import="java.util.Map"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>test</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="javascript/jquery-1.12.4.min.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/project.css">
+<meta charset="utf-8">
+<title>test</title>
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="javascript/jquery-1.12.4.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/project.css">
 
 </head>
 <body>
 
-<script>
+	<script>
 
 	window.onload = function() {
 			<% 
@@ -57,11 +62,7 @@ import =  "java.util.Map"%>
 				if (userTasks!=null && userTasks.size() > 1) {
 					System.out.println("userTasks="+userTasks);
 					userTasks.forEach((k, v) -> tasksForUser.add(k));
-					
-		// 			for (Map.Entry<String, Boolean> entry : userTasks.entrySet()) {
-		// // 	            System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
-		// 				tasksForUser.add(entry.getKey());
-		// 	        }
+	
 			
 					for (int j=0; j<tasksForUser.size(); j++){
 			%>
@@ -75,9 +76,10 @@ import =  "java.util.Map"%>
 			if(tasksForUser != null){
 						if(userTasks.get(tasksForUser.get(j))){ 
 			%>
-							checkbox.checked;
-			<%
-						}
+
+							checkbox.checked = true;
+			<%			
+
 						}
 			%>
 						span.innerHTML = "<%= tasksForUser.get(j) %>";
@@ -175,7 +177,7 @@ import =  "java.util.Map"%>
 	
 	
 	</script>
-	
+
 	<!-- side bar -->
 	<div id="mySidenav" class="sidenav">
 		<img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png"
@@ -184,6 +186,7 @@ import =  "java.util.Map"%>
 			<a id="createProject">Create a Project</a>
 			<input id="createProjectBar" type="text" name="projectName" class="form__input" placeholder="Project Code">
 		</form><a id="logoutButton"
+
 			href="login.jsp">Log out</a>
 	</div>
 
@@ -202,18 +205,18 @@ import =  "java.util.Map"%>
 		</div>
 		<!-- content -->
 		<div id="container">
- 			<div class="UsersTask">
- 				<div id="userCard1" class="tdl-holder">
-<!-- 					<h2>User 1</h2> -->
-<!-- 					<div class="tdl-content1"> -->
-<!-- 						<ul> -->
-<!-- 						</ul> -->
-<!-- 					</div> -->
-<!-- 					<div class="progress"> -->
-<!-- 						<div class="progress-bar bg-success progress-bar-striped" -->
-<!-- 							role="progressbar" style="width: 25%" aria-valuenow="25" -->
-<!-- 							aria-valuemin="0" aria-valuemax="100"></div> -->
-<!-- 					</div> -->
+			<div class="UsersTask">
+				<div id="userCard1" class="tdl-holder">
+					<!-- 					<h2>User 1</h2> -->
+					<!-- 					<div class="tdl-content1"> -->
+					<!-- 						<ul> -->
+					<!-- 						</ul> -->
+					<!-- 					</div> -->
+					<!-- 					<div class="progress"> -->
+					<!-- 						<div class="progress-bar bg-success progress-bar-striped" -->
+					<!-- 							role="progressbar" style="width: 25%" aria-valuenow="25" -->
+					<!-- 							aria-valuemin="0" aria-valuemax="100"></div> -->
+					<!-- 					</div> -->
 				</div>
 				<div id="userCard2" class="tdl-holder">
 					<!--                 <h2>User 2</h2> -->
@@ -269,9 +272,7 @@ import =  "java.util.Map"%>
 			<div class="ProjectTasks">
 				<div id="projectTasksList" class="tdl-holder">
 					<h2>Unassigned Tasks</h2>
-					<div id="projectListDiv" class="tdl-content">
-						
-					</div>
+					<div id="projectListDiv" class="tdl-content"></div>
 					<input type="text" class="tdl-new"
 						placeholder="Enter a new task...">
 				</div>
@@ -317,8 +318,7 @@ import =  "java.util.Map"%>
     for (int i = 0; i < userProjects.size(); i++){ %>
     $("#projectDirection").append("<a href='#' onclick='jumpToProject(\"<%=userProjects.get(i).getID()%>\")" + "'>" + "<%=userProjects.get(i).getTitle()%>" + "</a>");
 
-    <%}
-    %>
+    <%}%>
 
     function jumpToProject(projectID, userID){
     	
@@ -351,7 +351,7 @@ import =  "java.util.Map"%>
             if (s == ""){
                 return false;
             }else{
-            	
+
             	// Send the update to the database
             	var taskTitle = $(this).val();
             	var projectID = "<%=request.getSession().getAttribute("projectID")%>";
@@ -369,7 +369,7 @@ import =  "java.util.Map"%>
 	                $(".tdl-content ").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a name=\""+taskID+"\" href='#'>+</a></label></li>");
             	}
 	            $(this).val("");
-       
+            	
             }
         }
     });
@@ -384,9 +384,18 @@ import =  "java.util.Map"%>
         console.log("taskID = "+(this).name);
 
         var taskID = (this).name;
-        console.log("taskID = "+ taskID);
-        assignTaskInDatabase(userID, taskID);
-        $(".<%=request.getSession().getAttribute("tdl-content")%>").append("<li><label><input type=\"checkbox\" unchecked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
+        console.log("taskID = "+ taskID); 
+        var url = "UpdateDatabase?queryType=assignTask&userID="+userID+"&taskID="+taskID;
+    	var databaseRequest = new XMLHttpRequest();
+    	databaseRequest.open('GET', url, true);
+    	databaseRequest.send();
+    	
+    	databaseRequest.onload = function() {
+    		console.log("database response = "+databaseRequest.response);
+    		var taskID = databaseRequest.response;
+            //$(".tdl-content ").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a name=\""+taskID+"\" href='#'>+</a></label></li>");
+	        $(".<%=request.getSession().getAttribute("tdl-content")%>").append("<li><label><input type=\"checkbox\" unchecked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
+    	}
         $(this).val("");
         _li.addClass("remove").stop().delay(100).slideUp("fast", function(){
             _li.remove();
