@@ -182,6 +182,7 @@ body {
     float: right;
     margin-right:  50px;
     margin-top: -30px;
+    /* font-size: 20px; */
 }
 
 
@@ -415,10 +416,16 @@ input[type="text"]{
     font-size: 16px; !important;
 }
 
+#searchProjectBar {margin-top: 10px;font-size: 15px;}
 
 #searchProjectButton{
-    position: fixed;
-    margin-left: 900px;
+    /* position: fixed; */
+    /* margin-left: 1257px; */
+    /* float: right; */
+    /* display: inline-block; */
+    position: absolute;
+    right: 0;
+    margin-right: 230px;
 }
 
 #projectTasksList {display: inline-table;height: 0%;}
