@@ -59,11 +59,7 @@
                 Map<String, Boolean> userTasks = userTaskMap.get(userNames.get(i));
                 ArrayList<String> tasksForUser = new ArrayList<String>();
 
-<<<<<<< HEAD
-                if (userTasks!=null) {
-=======
                 if (userTasks!=null && userTasks.size() > 1) {
->>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
                     System.out.println("userTasks="+userTasks);
                     userTasks.forEach((k, v) -> tasksForUser.add(k));
 
@@ -72,10 +68,7 @@
             %>
         var listItem = document.createElement('li');
         var label = document.createElement('label');
-<<<<<<< HEAD
         // label.onclick = updateProgressBar(<%= i %>, <%= tasksForUser.size()%>, );
-=======
->>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         var circle = document.createElement('i');
@@ -83,11 +76,7 @@
         <%
                     if(userTasks.get(tasksForUser.get(j))){
         %>
-<<<<<<< HEAD
-       					checkbox.checked = true;
-=======
-        checkbox.checked = true;
->>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
+       	checkbox.checked = true;
         <%
                     }
         %>
@@ -109,14 +98,9 @@
 
         // Add the progress bar
         var progressBarDiv = document.createElement('div');
-<<<<<<< HEAD
         progressBarDiv.className = "progress"; 
         var progressBar = document.createElement('div');
         progressBar.id = "progressBar"+parseInt(<%=i%>+1);
-=======
-        progressBarDiv.className = "progress";
-        var progressBar = document.createElement('div');
->>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
         progressBar.className = "progress-bar bg-dark progress-bar-striped";
         progressBar.style.width = "25%";
         //          progressBar.style.aria-valuenow = "25";
