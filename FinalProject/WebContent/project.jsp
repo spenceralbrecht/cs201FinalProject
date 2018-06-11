@@ -59,7 +59,11 @@
                 Map<String, Boolean> userTasks = userTaskMap.get(userNames.get(i));
                 ArrayList<String> tasksForUser = new ArrayList<String>();
 
+<<<<<<< HEAD
                 if (userTasks!=null) {
+=======
+                if (userTasks!=null && userTasks.size() > 1) {
+>>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
                     System.out.println("userTasks="+userTasks);
                     userTasks.forEach((k, v) -> tasksForUser.add(k));
 
@@ -68,7 +72,10 @@
             %>
         var listItem = document.createElement('li');
         var label = document.createElement('label');
+<<<<<<< HEAD
         // label.onclick = updateProgressBar(<%= i %>, <%= tasksForUser.size()%>, );
+=======
+>>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         var circle = document.createElement('i');
@@ -76,7 +83,11 @@
         <%
                     if(userTasks.get(tasksForUser.get(j))){
         %>
+<<<<<<< HEAD
        					checkbox.checked = true;
+=======
+        checkbox.checked = true;
+>>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
         <%
                     }
         %>
@@ -98,9 +109,14 @@
 
         // Add the progress bar
         var progressBarDiv = document.createElement('div');
+<<<<<<< HEAD
         progressBarDiv.className = "progress"; 
         var progressBar = document.createElement('div');
         progressBar.id = "progressBar"+parseInt(<%=i%>+1);
+=======
+        progressBarDiv.className = "progress";
+        var progressBar = document.createElement('div');
+>>>>>>> 25c636d1845697e342fcdcc0cea5d9b3c5d062e4
         progressBar.className = "progress-bar bg-dark progress-bar-striped";
         progressBar.style.width = "25%";
         //          progressBar.style.aria-valuenow = "25";
@@ -198,6 +214,7 @@
         <i class="fas fa-check-square fa-4x"></i> 
         <i id="searchProjectButton" class="fas fa-search fa-4x"></i> 
         <input id="searchProjectBar" class="searchProjectCode" type="text" name="projectCode">
+
     </div>
     <div onclick="changeNav()">
         <i id="navButton" class="fas fa-arrow-right fa-7x"></i>
@@ -205,18 +222,12 @@
     <!-- content -->
     <div id="container">
         <div class="UsersTask">
-            <div id="userCard1" class="tdl-holder">
-            </div>
-            <div id="userCard2" class="tdl-holder">
-            </div>
-            <div id="userCard3" class="tdl-holder">
-            </div>
-            <div id="userCard4" class="tdl-holder">
-            </div>
-            <div id="userCard5" class="tdl-holder">
-            </div>
-            <div id="userCard6" class="tdl-holder">
-            </div>
+            <div id="userCard1" class="tdl-holder"></div>
+            <div id="userCard2" class="tdl-holder"></div>
+            <div id="userCard3" class="tdl-holder"></div>
+            <div id="userCard4" class="tdl-holder"></div>
+            <div id="userCard5" class="tdl-holder"></div>
+            <div id="userCard6" class="tdl-holder"></div>
         </div>
         <div class="ProjectTasks">
             <div id="projectTasksList" class="tdl-holder">

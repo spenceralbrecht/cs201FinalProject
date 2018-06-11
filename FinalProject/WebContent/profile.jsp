@@ -96,15 +96,15 @@
     function jumpToProject(projectID, userID) {
         var url = "LoadProjectData";
         $.ajax({
-            type: "GET",
-            url: url,
-            data: {
+            type : "GET",
+            url : url,
+            data : {
                 projectID: projectID,
                 userID: userID,
             },
             // Runs once the request returns
-            success: function (content) {
-                console.log("going to servlet");
+            success : function(content) {
+                console.log("going to swervlet");
                 location.href = "project.jsp";
                 //                    sendUpdateToAllOtherUsers();
             }
