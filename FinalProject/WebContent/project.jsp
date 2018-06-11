@@ -11,31 +11,20 @@ import =  "java.util.Map"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>test</title>
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="javascript/jquery-1.12.4.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="javascript/database.js"></script>
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
-	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="css/project.css">
-<script>
-        /* Set the width of the side navigation to 250px */
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-        }
+    <meta charset="utf-8">
+    <title>test</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="javascript/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/project.css">
 
-        /* Set the width of the side navigation to 0 */
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
 </head>
 <body>
-	<script>
+
+<script>
+
 	window.onload = function() {
 			<% 
 			Map<String, Map<String, Boolean> > userTaskMap = new HashMap<>();
@@ -289,10 +278,12 @@ import =  "java.util.Map"%>
 		</div>
 	</div>
 	<script>
-	
+
     var isOpen = false;
     var tasks = 100;//how many tasks total user needs to do;
-    var username = "James"; //first name
+    <%String usr  =(String) request.getSession().getAttribute("username");%>
+    console.log("<%=usr%>");
+    var username = "<%=usr%>";
     var Projects = null;//should be a project array.
     var user;
     function openNav() {
@@ -354,6 +345,7 @@ import =  "java.util.Map"%>
             if (s == ""){
                 return false;
             }else{
+            	
             	// Send the update to the database
             	var taskTitle = $(this).val();
             	var projectID = "<%=request.getSession().getAttribute("projectID")%>";
@@ -371,7 +363,7 @@ import =  "java.util.Map"%>
 	                $(".tdl-content ").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a name=\""+taskID+"\" href='#'>+</a></label></li>");
             	}
 	            $(this).val("");
-            	
+       
             }
         }
     });
@@ -379,7 +371,6 @@ import =  "java.util.Map"%>
 
     // when you add a task into your task list;
     $(".tdl-content").on('click', "a", function(){
-    	console.log("hello");
         var _li = $(this).parent().parent("li");
         var userTaskList = ("<%=request.getSession().getAttribute("tdl-content")%>");
         var userID = "<%=request.getSession().getAttribute("userID")%>";
