@@ -92,6 +92,7 @@ public class UpdateDatabase extends HttpServlet {
 				
 				// Assigning a task to a user
 				if (option.equals("assignTask")) {
+					System.out.println("here user id" + userID);
 					preparedStatement = conn.prepareStatement("UPDATE Task SET userID =? WHERE taskID =? ");
 					preparedStatement.setInt(1, userID);
 					preparedStatement.setInt(2, taskID);
