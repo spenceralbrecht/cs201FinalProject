@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -61,17 +62,31 @@ public class UpdateDatabase extends HttpServlet {
 				System.out.println("project id "+projectID);
 				
 //				preparedStatement = conn.prepareStatement("INSERT INTO Task(title, projectID, userID) VALUES ('"+title+"',"+ projectID + "',null");
-				String query = "INSERT INTO Task (title, projectID) VALUES(?, ?)";
+				String query = "INSERT INTO Task (title, projectID, completed) VALUES(?, ?,false)";
 				
 				preparedStatement = conn.prepareStatement(query);
 				preparedStatement.setString(1, title);
 				preparedStatement.setInt(2, projectID);
-				
+				System.out.println("LET IT GO");
 				// Execute the SQL command for adding a task to the database
-				preparedStatement.executeUpdate();				
+				preparedStatement.executeUpdate();
+				String query2 = "SELECT t.taskID FROM Task t WHERE t.title=? AND t.projectID=?";
+				preparedStatement = conn.prepareStatement(query2);
+				preparedStatement.setString(1, title);
+				preparedStatement.setInt(2, projectID);
+				resultSet = preparedStatement.executeQuery();
+				
+				// Return the taskID of the task we just added to the database
+				if (resultSet.next()) {
+					request.setAttribute("taskID", resultSet.getInt("taskID"));
+					response.setContentType("text/html");
+					PrintWriter writer = response.getWriter();
+					writer.println(resultSet.getInt("taskID"));
+				}
 			}
 			else {
-				
+				System.out.println(request.getParameter("userID"));
+				System.out.println(request.getParameter("taskID"));
 				int userID = Integer.valueOf(request.getParameter("userID"));
 				int taskID = Integer.valueOf(request.getParameter("taskID"));
 				

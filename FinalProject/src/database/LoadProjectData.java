@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import check.Task;
+
 /**
  * Servlet implementation class LoadProjectData
  */
@@ -73,6 +75,7 @@ public class LoadProjectData extends HttpServlet {
 			}
 
 			request.getSession().setAttribute("userNames", userNames);
+			request.getSession().setAttribute("projectID", projectID);
 
 			Map<String, Map<String, Boolean>> userTaskMap = new HashMap<>();
 
@@ -110,24 +113,29 @@ public class LoadProjectData extends HttpServlet {
 			request.getSession().setAttribute("userTaskMap", userTaskMap);
 
 			System.out.println("in lpd line 97" + request.getSession().getAttribute("userTaskMap"));
-
 			// Get all unassigned tasks in a specific project
 			preparedStatement = conn.prepareStatement(
-					"SELECT DISTINCT t.taskID, t.userID, t.title, t.projectID FROM Task t WHERE t.projectID=? AND t.userID=?");
+					"SELECT DISTINCT t.taskID, t.userID, t.taskID, t.title, t.projectID FROM Task t WHERE t.userID  IS NULL AND t.projectID =?");
 			preparedStatement.setInt(1, projectID);
-			preparedStatement.setInt(2, userID);
+			
+			System.out.println("jello");
 
-			ArrayList<String> unassignedTasks = new ArrayList<String>();
+			ArrayList<Task> unassignedTasks = new ArrayList<Task>();
 			// Execute the query and get the result in a table
 			resultSet = preparedStatement.executeQuery();
-
+		
 			while (resultSet.next()) {
 				String title = resultSet.getString("title");
-				unassignedTasks.add(title);
+				System.out.println(title);
+				int taskID = resultSet.getInt("taskID");
+				System.out.println(taskID);
+				Task t = new Task(title);
+				t.setID(taskID);
+				unassignedTasks.add(t);
 			}
-
+			System.out.println(unassignedTasks);
 			// Send back a list of titles to the JSP
-			request.setAttribute("unassignedTasks", unassignedTasks);
+			request.getSession().setAttribute("unassignedTasks", unassignedTasks);
 
 
 		} catch (SQLException sqle) {

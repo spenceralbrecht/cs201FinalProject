@@ -6,7 +6,7 @@
   Time: 1:35 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" import = "java.util.ArrayList" import = "java.util.HashMap"
+<%@ page contentType="text/html;charset=UTF-8" language="java" import = "check.Task" import = "java.util.ArrayList" import = "java.util.HashMap"
 import =  "java.util.Map"%>
 <!DOCTYPE html>
 <html>
@@ -56,9 +56,12 @@ import =  "java.util.Map"%>
 				userCard.appendChild(title);
 <%-- 				var content = document.getElementById("tdl-content"+parseInt(<%=i%>+1)); --%>
 				var content = document.createElement('div');
-				content.className = "tdl-content"+parseInt(<%=i%>+1);
-				
+				content.className = "tdl-content"+parseInt(<%=i%>+1);		
 		<%
+				String username = (String)request.getSession().getAttribute("username");
+				if(userNames.get(i).equals(username)){
+					request.getSession().setAttribute("tdl-content", "tdl-content"+(i+1));
+				}
 				Map<String, Boolean> userTasks = userTaskMap.get(userNames.get(i));
 				ArrayList<String> tasksForUser = new ArrayList<String>();
 			
@@ -92,6 +95,7 @@ import =  "java.util.Map"%>
 						label.appendChild(span);
 						listItem.appendChild(label);
 						content.appendChild(listItem);
+						userCard.appendChild(content); 
 			<%			
 					}
 			%>				
@@ -99,7 +103,7 @@ import =  "java.util.Map"%>
 				}
 			%>
 				// Adds users tasks to the card
-				userCard.appendChild(content); 
+				
 				
 				// Add the progress bar
 				var progressBarDiv = document.createElement('div');
@@ -116,8 +120,65 @@ import =  "java.util.Map"%>
 		<%		
 			}
 		%>
+		<% 
+		
+		ArrayList<Task> unassignedTasks = new ArrayList<Task>();
+		unassignedTasks = (ArrayList<Task>) request.getSession().getAttribute("unassignedTasks");
+		System.out.println("unASS: " + unassignedTasks);
+		// Map that has userName to map of tasks with name and completed boolean
+// 		System.out.println("we are all in this together");
+// 		System.out.println(request.getSession().getAttribute("userTaskMap"));
 		
 		
+		
+	%>
+		var projectTaskList = document.getElementById("projectTasksList");
+		
+<%-- 				var content = document.getElementById("tdl-content"+parseInt(<%=i%>+1)); --%>
+		/* var content = document.createElement('div');
+		content.className = "tdl-content"; */
+		var content2 = document.getElementById('projectListDiv');
+		var list = document.createElement('ul');
+		
+		
+	<%
+		if (unassignedTasks!= null) {
+			
+			for(int i = 0; i < unassignedTasks.size(); i++) { 
+				System.out.println(" "+unassignedTasks.get(i).getTaskID());
+	%>
+				var listItem = document.createElement('li');
+				var label = document.createElement('label');
+				var add = document.createElement('i');
+				var span = document.createElement('span');
+				var link = document.createElement('a');
+				link.name = "<%=unassignedTasks.get(i).getTaskID()%>";
+				link.innerHTML = "+";
+				span.innerHTML = "<%= unassignedTasks.get(i).getTask() %>";
+				label.appendChild(link);
+				label.appendChild(add);
+				label.appendChild(span);
+				listItem.appendChild(label);
+				list.appendChild(listItem);		
+	<%			
+				
+			}
+	%>
+			
+			content2.appendChild(list);
+	<%	
+		}
+	
+		else {
+	%>
+			var listItem = document.createElement('li');	
+			listItem.appendChild(label);
+	<%	
+		}
+	%>
+			
+	list.appendChild(listItem);
+	content.appendChild(list);
 		
 	}
 	
@@ -127,8 +188,7 @@ import =  "java.util.Map"%>
 	<!-- side bar -->
 	<div id="mySidenav" class="sidenav">
 		<img id="avatar" src="https://www.w3schools.com/howto/img_avatar.png"
-			width="100" height="100" /> <a id="name" href="profile.jsp">Jinpeng
-			He</a> <span id="projectDirection"></span> <a id="logoutButton"
+			width="100" height="100" /> <a id="name" href="profile.jsp"><%=request.getSession().getAttribute("username") %></a> <span id="projectDirection"></span> <a id="logoutButton"
 			href="login.jsp">Log out</a>
 	</div>
 
@@ -214,9 +274,8 @@ import =  "java.util.Map"%>
 			<div class="ProjectTasks">
 				<div id="projectTasksList" class="tdl-holder">
 					<h2>Unassigned Tasks</h2>
-					<div class="tdl-content">
-						<ul>
-						</ul>
+					<div id="projectListDiv" class="tdl-content">
+						
 					</div>
 					<input type="text" class="tdl-new"
 						placeholder="Enter a new task...">
@@ -265,6 +324,7 @@ import =  "java.util.Map"%>
     %>
 
     function jumpToProject(projectID, userID){
+    	
 		var url = "LoadProjectData";
 		$.ajax({
 			type : "GET",
@@ -296,11 +356,22 @@ import =  "java.util.Map"%>
             }else{
             	// Send the update to the database
             	var taskTitle = $(this).val();
-            	console.log(taskTitle);
-            	addTaskInDatabase(taskTitle, 1)
+            	var projectID = "<%=request.getSession().getAttribute("projectID")%>";
+            	//console.log(taskTitle);
+            	//var taskID = addTaskInDatabase(taskTitle, projectID);
             	
-                $(".tdl-content ul").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a href='#'>+</a></label></li>");
-                $(this).val("");
+            	var url = "UpdateDatabase?queryType=addTask&title="+taskTitle+"&projectID="+projectID;
+            	var databaseRequest = new XMLHttpRequest();
+            	databaseRequest.open('GET', url, true);
+            	databaseRequest.send();
+            	
+            	databaseRequest.onload = function() {
+            		console.log("database response = "+databaseRequest.response);
+            		var taskID = databaseRequest.response;
+	                $(".tdl-content ").append("<li><label><i></i><span class=\"val\">"+ v +"</span><a name=\""+taskID+"\" href='#'>+</a></label></li>");
+            	}
+	            $(this).val("");
+            	
             }
         }
     });
@@ -310,7 +381,15 @@ import =  "java.util.Map"%>
     $(".tdl-content").on('click', "a", function(){
     	console.log("hello");
         var _li = $(this).parent().parent("li");
-        $(".tdl-content1 ul").append("<li><label><input type=\"checkbox\" unchecked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
+        var userTaskList = ("<%=request.getSession().getAttribute("tdl-content")%>");
+        var userID = "<%=request.getSession().getAttribute("userID")%>";
+        console.log(<%=request.getSession().getAttribute("userID")%>);
+        console.log("taskID = "+(this).name);
+
+        var taskID = (this).name;
+        console.log("taskID = "+ taskID);
+        assignTaskInDatabase(userID, taskID);
+        $(".<%=request.getSession().getAttribute("tdl-content")%>").append("<li><label><input type=\"checkbox\" unchecked><i></i><span class=\"val\">"+ _li.find("span").text()+"</label></li>");
         $(this).val("");
         _li.addClass("remove").stop().delay(100).slideUp("fast", function(){
             _li.remove();

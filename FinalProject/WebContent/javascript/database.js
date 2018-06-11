@@ -2,6 +2,7 @@ function addTaskInDatabase(title, projectID) {
 
 	var url = "UpdateDatabase";
 	var type = "addTask";
+	var taskID = "";
 
 	$.ajax({
 		type : "GET",
@@ -9,15 +10,20 @@ function addTaskInDatabase(title, projectID) {
 		data : {
 			queryType: type,
 			title: title,
+			async: false,
 			projectID: projectID,
 		},
 //		data : 'queryType=' + type + '&title=' + title + '&projectID='+ projectID,
 		// Runs once the request returns
-		success : function(content) {
+		success : function(result) {
 			console.log("updated task in database");
+			taskID = result;
+			console.log(taskID);
+			
 			// 	                  sendUpdateToAllOtherUsers();
 		}
 	});
+	return taskID;
 }
 
 function markCompletedInDatabase(userID, taskID) {
@@ -26,7 +32,7 @@ function markCompletedInDatabase(userID, taskID) {
 
 	$.ajax({
 		type : "POST",
-		data : 'queryType=' + type + '&userID=' + userID + 'taskID=' + taskID,
+		data : 'queryType=' + type + '&userID=' + userID + '&taskID=' + taskID,
 		url : url,
 
 		// Runs once the request returns
@@ -40,10 +46,10 @@ function markCompletedInDatabase(userID, taskID) {
 function assignTaskInDatabase(userID, taskID) {
 	var url = "UpdateDatabase";
 	var type = "assignTask";
-
+console.log("uid = "+ userID + " tID:" + taskID);
 	$.ajax({
-		type : "POST",
-		data : 'queryType=' + type + '&userID=' + userID + 'taskID=' + taskID,
+		type : "GET",
+		data : "queryType=" + type + "&userID=" + userID + "&taskID=" + taskID,
 		url : url,
 
 		// Runs once the request returns

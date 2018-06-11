@@ -18,7 +18,7 @@ public class JDBCDriver {
 		try {
 	
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=spencer&useSSL=false");
+			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/Users?user=root&password=password!&useSSL=false");
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
