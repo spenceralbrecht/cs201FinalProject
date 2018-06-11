@@ -165,26 +165,28 @@ body {
     float: left;
 }
 
-#searchProjectButton{
-    position: fixed;
-    margin-left: 900px;
-}
 
-.searchProjectCode{
+
+
+
+.searchProjectCode {
     border-color: #000000;
     border-style: solid;
     border-top-width: 0px;
     border-right-width: 0px;
     border-bottom-width: 2px;
     border-left-width: 0px;
-    background-color:var(--headerBackgroundColor);
-    height: 30px;
+    background-color: var(--headerBackgroundColor);
+    height: 70px;
     float: right;
-    margin-right:  50px;
+    margin-right: 50px;
     margin-top: -30px;
-    /* font-size: 20px; */
 }
 
+#searchProjectButton{
+    margin-left:900px;
+
+}
 
 *:focus{outline:none !important;}
 
@@ -416,16 +418,15 @@ input[type="text"]{
     font-size: 16px; !important;
 }
 
-#searchProjectBar {margin-top: 10px;font-size: 15px;}
 
-#searchProjectButton{
-    /* position: fixed; */
-    /* margin-left: 1257px; */
-    /* float: right; */
-    /* display: inline-block; */
-    position: absolute;
-    right: 0;
-    margin-right: 230px;
-}
 
 #projectTasksList {display: inline-table;height: 0%;}
+#projectName{
+    color:white;
+    font-size:50px;
+}
+#projectID{
+    color:white;
+    font-size:50px;
+    margin-left:900px;
+}
