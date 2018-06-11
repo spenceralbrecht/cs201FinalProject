@@ -199,16 +199,64 @@ public class JDBCDriver {
 				ps.setInt(1, pID);
 				ps.setInt(2, userID);
 				ps.executeUpdate();
+
 			}
 
 		}catch (SQLException e) {
-				System.out.println("SQLException in function \"projectExists\"");
+				System.out.println("SQLException in function \"userInProject\"");
 				e.printStackTrace();
 			}finally{
 				close();
 			}
 			return false;
 		}
-	
+	public static void createProject(String projectName, int userID){
+		connect();
+		try {
+			ps = conn.prepareStatement("INSERT INTO Project (ptitle, userID) VALUES (?,?)");
+			ps.setString(1, projectName);
+			ps.setInt(2, userID);
+			ps.executeUpdate();
+		}catch (SQLException e) {
+			System.out.println("SQLException in function \"createProject\"");
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}public static int getPID(String projectName, int userID){
+		connect();
+		try {
+			ps = conn.prepareStatement("SELECT projectID FROM Project WHERE ptitle=? AND userID=?");
+			ps.setString(1, projectName);
+			ps.setInt(2, userID);
+			rs = ps.executeQuery();
+			if (rs.next()){
+				int pID = rs.getInt("projectID");
+				return pID;
+			}
+
+			return 0;
+		}catch (SQLException e) {
+			System.out.println("SQLException in function \"getPID\"");
+			e.printStackTrace();
+		}finally{
+			close();
+			}
+			return 0;
+	}
+	public static void createUserProject(int projectID, int userID){
+		connect();
+		try {
+			ps = conn.prepareStatement("INSERT INTO UserProject (projectID, userID) VALUES(?, ?)");
+			ps.setInt(1, projectID);
+			ps.setInt(2, userID);
+			ps.executeUpdate();
+		}catch (SQLException e) {
+			System.out.println("SQLException in function \"createUserProject\"");
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
 
 }
