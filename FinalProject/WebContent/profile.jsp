@@ -57,7 +57,7 @@
     <!-- header -->
 
     <div class="header">
-        <h1><a href="#">CheckMate</a></h1>
+        <h1><a href="login.jsp">CheckMate</a></h1>
         <i class="fas fa-check-square fa-4x"></i>
         <span id="searchBar">
         <i id="searchProjectButton" class="fas fa-search fa-4x"></i>

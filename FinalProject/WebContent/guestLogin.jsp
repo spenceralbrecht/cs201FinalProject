@@ -26,7 +26,7 @@
 
         <div class="form__field">
             <label for="projectID"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Project Code</span></label>
-            <input id="projectID" type="text" name="username" class="form__input" placeholder="Project Code..." required>
+            <input id="projectID" type="text" name="projectID" class="form__input" placeholder="Project Code..." required>
         </div>
 
         <div class="form__field">

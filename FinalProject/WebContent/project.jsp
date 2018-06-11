@@ -29,21 +29,30 @@
 <body>
 
 <script>
-
     window.onload = function() {
         <%
-        Map<String, Map<String, Boolean> > userTaskMap = new HashMap<>();
 
-        // Map that has userName to map of tasks with name and completed boolean
+        if(request.getSession().getAttribute("isGuest") == "true"){
+            System.out.println(request.getSession().getAttribute("isGuest"));
+            %>
+
+        $("#container").css("pointer-events","none");
+        $("#mySidenav").css("pointer-events","none");
+            <%
+
+    }
+    Map<String, Map<String, Boolean> > userTaskMap = new HashMap<>();
+
+    // Map that has userName to map of tasks with name and completed boolean
 //      System.out.println("we are all in this together");
 //      System.out.println(request.getSession().getAttribute("userTaskMap"));
-        userTaskMap = ( Map<String, Map<String, Boolean> >) request.getSession().getAttribute("userTaskMap");
+    userTaskMap = ( Map<String, Map<String, Boolean> >) request.getSession().getAttribute("userTaskMap");
 
-        int numUsers = userTaskMap.size();
-        System.out.println("numUsrs= "+numUsers);
-        ArrayList<String> userNames = (ArrayList<String>)request.getSession().getAttribute("userNames");
-        for(int i = 0; i < userNames.size(); i++) {
-    %>
+    int numUsers = userTaskMap.size();
+    System.out.println("numUsrs= "+numUsers);
+    ArrayList<String> userNames = (ArrayList<String>)request.getSession().getAttribute("userNames");
+    for(int i = 0; i < userNames.size(); i++) {
+%>
         var userCard = document.getElementById("userCard"+parseInt(<%=i%>+1));
         var title = document.createElement('h2');
         title.innerHTML = "<%= userNames.get(i) %>";
@@ -191,7 +200,7 @@
     <!-- header -->
     <div class="header">
         <h1>
-            <a href="#">CheckMate</a>
+            <a href="login.jsp">CheckMate</a>
         </h1>
         <i class="fas fa-check-square fa-4x"></i> <i id="searchProjectButton"
                                                      class="fas fa-search fa-4x"></i> <input class="searchProjectCode"

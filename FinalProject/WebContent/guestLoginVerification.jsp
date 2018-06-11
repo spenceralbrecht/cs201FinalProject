@@ -16,7 +16,8 @@
     int projectID = Integer.parseInt(request.getParameter("projectID"));
     if (JDBCDriver.projectExistence(projectID)) {
         request.getSession().setAttribute("projectID", projectID);
-        response.sendRedirect("LoadProjectData&projectID=" + projectID);
+        request.getSession().setAttribute("isGuest", "true");
+        response.sendRedirect("LoadProjectData?projectID=" + projectID);
     } else {
         request.setAttribute("errmsg", "Project ID does not exist.");
         response.sendRedirect("guestLogin.jsp");
