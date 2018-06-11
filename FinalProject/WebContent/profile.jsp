@@ -19,7 +19,26 @@
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/odometer-theme-default.css"/>
-    <script src="javascript/odometer.min.js"></script>
+    <script src="javascript/odometer.min.js">
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.getElementById("navButton").style.transform = "rotate(180deg)";
+            isOpen = true;
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("navButton").style.transform = "";
+            isOpen = false;
+        }
+
+        function changeNav() {
+            if (isOpen) closeNav();
+            else openNav();
+        }</script>
+
 </head>
 <body>
 <!-- side bar -->
@@ -56,31 +75,13 @@
 <script>
     var isOpen = false;
     <%int numTasks  =(int) request.getSession().getAttribute("numTasks");%>
-	console.log("<%=numTasks%>");
+    console.log("<%=numTasks%>");
     var tasks = "<%=numTasks%>";
     //how many tasks total user needs to do;
-	<%String usr  =(String) request.getSession().getAttribute("username");%>
-	console.log("<%=usr%>");
-	var username = "<%=usr%>";
+    <%String usr  =(String) request.getSession().getAttribute("username");%>
+    console.log("<%=usr%>");
+    var username = "<%=usr%>";
 
-    function openNav() {
-        document.getElementById("mySidenav").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-        document.getElementById("navButton").style.transform = "rotate(180deg)";
-        isOpen = true;
-    }
-
-    function closeNav() {
-        document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
-        document.getElementById("navButton").style.transform = "";
-        isOpen = false;
-    }
-
-    function changeNav() {
-        if (isOpen) closeNav();
-        else openNav();
-    }
     // adding task in side nav bar
 
 
@@ -92,9 +93,22 @@
     <%}
     %>
 
-    function jumpToProject(i){
-        request.getSession().setAttribute("projectID",i);
-        location.href = "LoadProjectData";
+    function jumpToProject(projectID, userID) {
+        var url = "LoadProjectData";
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: {
+                projectID: projectID,
+                userID: userID,
+            },
+            // Runs once the request returns
+            success: function (content) {
+                console.log("going to servlet");
+                location.href = "project.jsp";
+                //                    sendUpdateToAllOtherUsers();
+            }
+        });
     }
 
 
@@ -118,6 +132,26 @@
         $("#createProjectBar").toggle();
         return false;
     });
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.getElementById("navButton").style.transform = "rotate(180deg)";
+        isOpen = true;
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.getElementById("navButton").style.transform = "";
+        isOpen = false;
+    }
+
+    function changeNav() {
+        if (isOpen) closeNav();
+        else openNav();
+    }
+
 </script>
 </body>
 </html>
